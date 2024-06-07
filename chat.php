@@ -34,9 +34,12 @@ $friends = $stmt->fetchAll(PDO::FETCH_ASSOC);
         </div>
         <input type="text" id="str">
         <button id="button1">送信</button>
+        <!-- 戻るボタンを追加 -->
+        <button onclick="goBack()">戻る</button>
     </div>
     <div id="f3">
         <h2>友達を選択</h2>
+        <button onclick="location.href='Top_kensakukekka.php'">Topに戻る</button>
         <ul>
             <?php foreach ($friends as $friend): ?>
                 <li>
@@ -48,6 +51,10 @@ $friends = $stmt->fetchAll(PDO::FETCH_ASSOC);
         </ul>
     </div>
     <script>
+        function goBack() {
+            window.history.back();
+        }
+
         $(document).ready(function(){
             $("#chatwrap").hide(); // 初回ロード時はチャット枠を非表示
 
