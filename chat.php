@@ -22,7 +22,7 @@ $friends = $stmt->fetchAll(PDO::FETCH_ASSOC);
 <head>
     <meta charset="UTF-8">
     <title>チャット</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="css/styles.css">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
 </head>
@@ -32,10 +32,12 @@ $friends = $stmt->fetchAll(PDO::FETCH_ASSOC);
         <div id="Log">
             <ul></ul>
         </div>
-        <input type="text" id="str">
-        <button id="button1">送信</button>
-        <!-- 戻るボタンを追加 -->
-        <button onclick="goBack()">戻る</button>
+        <div id="controls">
+            <input type="text" id="str">
+            <button id="button1">送信</button>
+            <button onclick="window.location.href='Top_kensakukekka.php'">Topに戻る</button>
+            <button onclick="window.location.href=window.location.href">戻る</button>
+        </div>
     </div>
     <div id="f3">
         <h2>友達を選択</h2>
@@ -51,6 +53,8 @@ $friends = $stmt->fetchAll(PDO::FETCH_ASSOC);
         </ul>
     </div>
     <script>
+        let initialLoad = true;
+
         function goBack() {
             window.history.back();
         }
@@ -69,7 +73,9 @@ $friends = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
             $("#button1").click(function(){
                 var message = $("#str").val();
-                if(message.trim() !== ""){
+                if(message.trim().length > 300){
+                    alert("300文字以上は送信できません");
+                } else if(message.trim() !== ""){
                     $.ajax({
                         type: "POST",
                         url: "log.php",
@@ -82,6 +88,7 @@ $friends = $stmt->fetchAll(PDO::FETCH_ASSOC);
                             console.log("Message sent:", response);
                             $("#str").val(""); // テキストボックスをクリア
                             loadLog(); // ログを再読み込み
+                            scrollToBottom(); // 送信後に一番下にスクロール
                         },
                         error: function(xhr, status, error){
                             console.error("Error occurred while sending message:", status, error);
@@ -117,13 +124,25 @@ $friends = $stmt->fetchAll(PDO::FETCH_ASSOC);
                             console.log("Parsed log item:", name, chat, date);
                             $("<li></li>").html('<span style="color: #000;">' + name + '</span> <div class="log">' + chat + '</div> <div class="date">' + date + '</div>').appendTo("#Log ul");
                         });
+                        // ログを読み込んだ後にスクロールを一番下にする（初回のみ）
+                        if (initialLoad) {
+                            scrollToBottom();
+                            initialLoad = false;
+                        }
                     },
                     error: function(xhr, status, error){
                         console.error("Error occurred while loading log:", status, error);
                     }
                 });
             }
+
+            function scrollToBottom(){
+                $('#Log').scrollTop($('#Log')[0].scrollHeight);
+            }
         });
     </script>
 </body>
 </html>
+
+
+
