@@ -1,7 +1,8 @@
 <?php
 session_start();
-include('db_connect.php');
-
+include('db-connect.php');
+$pdo = new PDO($connect, USER, PASS);
+$pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 // ユーザーがログインしているか確認
 if (!isset($_SESSION['customer']['id'])) {
     echo 'Not logged in';
