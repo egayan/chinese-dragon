@@ -1,5 +1,5 @@
 <?php require 'header.php'; ?>    
-<?php require 'db_conect.php';?>
+<?php require 'db-connect.php';?>
 <?php
 if(isset($_GET['gest'])){
   $ids=[5];

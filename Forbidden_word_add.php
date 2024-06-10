@@ -1,5 +1,5 @@
 <?php require 'header.php'; ?>
-<?php require 'db_conect.php'; ?>
+<?php require 'db-connect.php'; ?>
 <?php
 $pdo=new PDO($connect,USER,PASS);
 if($_POST['word1'] == null && $_POST['word2'] == null && $_POST['word3'] == null){

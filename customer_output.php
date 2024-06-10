@@ -1,6 +1,6 @@
 <?php session_start();?>
 <?php require 'header.php'; ?>
-<?php require 'db_conect.php';?>
+<?php require 'db-connect.php';?>
 <div align="center"><h1>新規登録</h1></div>
 <?php
      $pdo=new PDO($connect,USER,PASS);
