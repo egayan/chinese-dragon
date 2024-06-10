@@ -1,5 +1,5 @@
 <?php require 'header.php'; ?>
-<?php require 'db_conect.php'; ?>
+<?php require 'db-connect.php'; ?>
 <table align="center">
 
     <tr><td><div align="center">チャイニーズドラゴン　　　　　
@@ -24,7 +24,7 @@ if(isset($_POST['kensaku'])){
     echo '<td>';
     echo '<div align="left">';
     foreach($sql as $row){
-    echo '<a href="partner.php?genre=',$row['title'],'">',$row['title'],'</a>　　';
+        echo '<a href="thread.php?thread_id=',$row['thread_id'],'">',$row['title'],'</a>';
         $tr++;
         if($tr==3){
         echo '</div>';
@@ -45,7 +45,7 @@ echo '<tr>';
 echo '<td>';
 echo '<div align="left">';
 foreach($sql as $row){
-    echo '<a href="partner.php?genre=',$row['title'],'">',$row['title'],'</a>　　';
+    echo '<a href="thread.php?thread_id=',$row['thread_id'],'">',$row['title'],'</a>';
     $tr++;
         if($tr==3){
         echo '</div>';
@@ -64,7 +64,7 @@ echo '</div>';
 echo '</td>';
 echo '</tr>';
 ?>
-    <tr><td><div align="center"><button><a href="*">新規スレッド書き込み画面へ</a></button>
+    <tr><td><div align="center"><button><a href="thread-write.php">新規スレッド書き込み画面へ</a></button>
     <button><a href="*">ジャンル一覧へ</a></button>
     <button><a href="Popularity.php">人気スレッドへ</a></button></div></td></tr>
     

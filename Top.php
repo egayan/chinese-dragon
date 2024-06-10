@@ -1,8 +1,7 @@
 <?php session_start(); ?>
 <?php require 'header.php'; ?>
-<?php require 'db_conect.php'; ?>
+<?php require 'db-connect.php'; ?>
 <?php
-$pdo = new PDO($connect,USER,PASS);
 if(isset($_GET['gest'])){
 ?>
     <!-- メニュー -->
@@ -22,7 +21,7 @@ if(isset($_GET['gest'])){
     echo '<div  align="left" >';
     foreach($sql as $row){
         
-        echo '<a href="******.php?title=',$row['title'],'">',$row['title'],'</a>　　';
+        echo '<a href="thread.php?thread_id=',$row['thread_id'],'">',$row['title'],'</a>';
         $tr++;
         if($tr==3){
         echo '</div>';
@@ -81,7 +80,7 @@ if(isset($_SESSION['customer'])){
 }
 if($_SESSION['login']['id']==1){
 
-$pdo = new PDO($connect,USER,PASS);
+$freeze_check = new PDO($connect,USER,PASS);
 $freeze_check = $pdo->prepare('select * from client where client_address=?');
 $freeze_check ->execute([$_POST['login']]);
 foreach($freeze_check as $row){
@@ -109,7 +108,7 @@ $sql = $pdo->query('select * from thread');
     echo '<div align="left">';
     foreach($sql as $row){
         
-        echo '<a href="******.php?title=',$row['title'],'">',$row['title'],'</a>　　';
+        echo '<a href="thread.php?thread_id=',$row['thread_id'],'">',$row['title'],'</a>';
         $tr++;
         if($tr==3){
         echo '</div>';
