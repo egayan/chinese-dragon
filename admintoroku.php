@@ -1,10 +1,9 @@
 <!DOCTYPE html>
 <html lang="ja">
-<link rel="stylesheet" href="css/style.css">
 <head>
     <meta charset="UTF-8">
     <title>新規登録画面</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="css/admintoroku.css">
 </head>
 
 <body>
@@ -13,7 +12,7 @@
    <p>ユーザーID<input type="text" name="admin_id"></p>
    <p>メールアドレス<input type="text" name="admin_address"></p>
    <p>パスワード<input type="text" name="admin_password"></p>
-   <button type="submit">登録</button>
+   <input type="submit" value="登録">
 </form>
 </body>
 </html>

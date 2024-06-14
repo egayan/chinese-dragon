@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <title>登録完了</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="css/admintorokuOK.css">
 </head>
 <body>
     <?php
@@ -17,7 +17,7 @@
     }
     ?>
     <br><hr><br>
-    <a href="login.php">ログイン画面</a>
+    <input type="submit" value="ログイン画面">
     </body>
 </html>
 </body>
