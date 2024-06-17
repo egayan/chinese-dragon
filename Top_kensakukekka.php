@@ -3,7 +3,7 @@
 <link rel="stylesheet" type="text/css" href="css/Top.css">
 <table align="center">
 
-    <tr><td><div align="center">チャイニーズドラゴン　　　　　
+    <tr><td><div align="center">チャイニーズドラゴン
     <a href="login_input.php">ログアウト</a></div></td></tr>
     
     <tr><td><div align="center">
@@ -70,7 +70,7 @@ echo '</tr>';
     
     <tr><td><div align="center"><button><a href="chat.php" style="color: #fff;">個人チャット</a></button>
     <button><a href="mypage.php" style="color: #fff;">マイページ</a></button>
-    <button><a href="*" style="color: #fff;">お問い合わせ</a></button>
+    <button><a href="inquiry.php" style="color: #fff;">お問い合わせ</a></button>
     <button><a href="warning.php" style="color: #fff;">使い方・注意</a></button></div></td></tr>
 </table>
 <?php require 'footer.php'; ?> 
