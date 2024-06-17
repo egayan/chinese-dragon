@@ -30,6 +30,7 @@ if(isset($_GET['gest'])){
     echo '</td>';
     echo '</tr>';
     echo '<tr><td><div align="center">';
+    echo '<button><a href="*">ジャンル一覧へ</a></button>';
     echo '<button><a href="Popularity.php?gest=gest">人気スレッドへ</a></button></div></td></tr>';
     
     echo '<tr><td>';
@@ -100,7 +101,7 @@ $sql = $pdo->query('select * from thread');
     echo '<div align="left">';
     foreach($sql as $row){
         
-        echo '<a href="******.php?title=',$row['title'],'">',$row['title'],'</a>';
+        echo '<a href="thread.php?thread_id=',$row['thread_id'],'">',$row['title'],'</a>';
         $tr++;
         if($tr==3){
         echo '</div>';

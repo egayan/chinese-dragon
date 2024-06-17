@@ -1,5 +1,5 @@
 <?php require 'header.php'; ?>
-<?php require 'db-connect.php'; ?>
+<?php require 'db_conect.php'; ?>
 <div align="center">アカウントを削除しました</div>
 <?php
 $pdo=new PDO($connect,USER,PASS);

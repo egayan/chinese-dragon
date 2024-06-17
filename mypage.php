@@ -1,7 +1,7 @@
 <?php session_start(); ?>
 <?php require 'header.php'; ?>
       
-<?php require 'db-connect.php';?>
+<?php require 'db_conect.php';?>
 <?php
      $pdo=new PDO($connect,USER,PASS);
      $name=$address=$password='';

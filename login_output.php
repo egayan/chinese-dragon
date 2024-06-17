@@ -1,6 +1,6 @@
 <?php session_start(); ?>
 <?php require 'header.php'; ?>
-<?php require 'db-connect.php'; ?>
+<?php require 'db_conect.php'; ?>
 <h1>ログイン<h1>
 <?php
 //dbで使う名前などはまだ決めてないので仮入力 

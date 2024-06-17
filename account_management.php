@@ -1,5 +1,5 @@
 <?php require 'header.php'; ?>
-<?php require 'db-connect.php'; ?>
+<?php require 'db_conect.php'; ?>
 <?php
 $pdo = new PDO($connect,USER,PASS);
 if(isset($_GET['freeze_out'])){

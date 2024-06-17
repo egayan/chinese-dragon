@@ -1,8 +1,11 @@
 <?php
 session_start();
-include('db-connect.php');
-$pdo = new PDO($connect, USER, PASS);
-$pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+include('db_connect.php');
+
+if (!isset($_SESSION['customer']['id'])) {
+    header('Location: login_input.php');
+    exit;
+}
 
 $user_id = $_SESSION['customer']['id'];
 
@@ -16,10 +19,10 @@ $friends = $stmt->fetchAll();
 <head>
     <meta charset="UTF-8">
     <title>友達リスト</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <h1>友達リスト</h1>
-
     <ul>
         <?php foreach ($friends as $friend): ?>
             <li><?php echo htmlspecialchars($friend['name']); ?></li>

@@ -40,7 +40,7 @@ HTML;
     }
     }
     // POST でアクセスされた時はリダイレクトレスポンスを返す
-    header('Location: /php2/kaihatu/Top.php?complete', true, 301);
+    header('Location: /php2/kaihatu/Top-kensakukekka.php?complete', true, 301);
 } elseif ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET['complete'])) {
     // POST でアクセスされた後のリダイレクト先。
     // リダイレクト先の画面で完了ページを表示する
