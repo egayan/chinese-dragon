@@ -117,7 +117,7 @@ $sql = $pdo->query('select * from thread');
     echo '</td>';
     echo '</tr>';
     ?>
-    <div><tr><td><div align="center"><button><a href="*" style="color: #fff;">新規スレッド書き込み画面へ</a></button>
+    <div><tr><td><div align="center"><button><a href="thread-write.php" style="color: #fff;">新規スレッド書き込み画面へ</a></button>
     <button><a href="Popularity.php" style="color: #fff;">人気スレッドへ</a></button></div></td></tr>
     
     <tr><td><div align="center"><button><a href="chat.php"style="color: #fff;">個人チャット</a></button>
