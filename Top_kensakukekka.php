@@ -25,7 +25,7 @@ if(isset($_POST['kensaku'])){
     echo '<td>';
     echo '<div align="left">';
     foreach($sql as $row){
-    echo '<a href="partner.php?genre=',$row['title'],'">',$row['title'],'</a>　　';
+        echo '<a href="thread.php?thread_id=',$row['thread_id'],'">',$row['title'],'</a>';
         $tr++;
         if($tr==3){
         echo '</div>';
@@ -46,7 +46,7 @@ echo '<tr>';
 echo '<td>';
 echo '<div align="left">';
 foreach($sql as $row){
-    echo '<a href="partner.php?genre=',$row['title'],'">',$row['title'],'</a>　　';
+    echo '<a href="thread.php?thread_id=',$row['thread_id'],'">',$row['title'],'</a>';
     $tr++;
         if($tr==3){
         echo '</div>';
@@ -65,7 +65,7 @@ echo '</div>';
 echo '</td>';
 echo '</tr>';
 ?>
-    <tr><td><div align="center"><button><a href="*" style="color: #fff;">新規スレッド書き込み画面へ</a></button>
+    <tr><td><div align="center"><button><a href="thread-write.php" style="color: #fff;">新規スレッド書き込み画面へ</a></button>
     <button><a href="Popularity.php" style="color: #fff;">人気スレッドへ</a></button></div></td></tr>
     
     <tr><td><div align="center"><button><a href="chat.php" style="color: #fff;">個人チャット</a></button>
