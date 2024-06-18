@@ -1,9 +1,8 @@
 <?php require 'header.php'; ?>
-<?php require 'db_conect.php'; ?>
-<link rel="stylesheet" type="text/css" href="css/Top.css">
+<?php require 'db-connect.php'; ?>
 <table align="center">
 
-    <tr><td><div align="center">チャイニーズドラゴン
+    <tr><td><div align="center">チャイニーズドラゴン　　　　　
     <a href="login_input.php">ログアウト</a></div></td></tr>
     
     <tr><td><div align="center">
@@ -65,12 +64,13 @@ echo '</div>';
 echo '</td>';
 echo '</tr>';
 ?>
-    <tr><td><div align="center"><button><a href="thread-write.php" style="color: #fff;">新規スレッド書き込み画面へ</a></button>
-    <button><a href="Popularity.php" style="color: #fff;">人気スレッドへ</a></button></div></td></tr>
+    <tr><td><div align="center"><button><a href="thread-write.php">新規スレッド書き込み画面へ</a></button>
+    <button><a href="genre.php">ジャンル一覧へ</a></button>
+    <button><a href="Popularity.php">人気スレッドへ</a></button></div></td></tr>
     
-    <tr><td><div align="center"><button><a href="chat.php" style="color: #fff;">個人チャット</a></button>
-    <button><a href="mypage.php" style="color: #fff;">マイページ</a></button>
-    <button><a href="inquiry.php" style="color: #fff;">お問い合わせ</a></button>
-    <button><a href="warning.php" style="color: #fff;">使い方・注意</a></button></div></td></tr>
+    <tr><td><div align="center"><button><a href="chat.php">個人チャット</a></button>
+    <button><a href="mypage.php">マイページ</a></button>
+    <button><a href="inquiry.php">お問い合わせ</a></button>
+    <button><a href="warning.php">使い方・注意</a></button></div></td></tr>
 </table>
 <?php require 'footer.php'; ?> 
