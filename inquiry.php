@@ -1,3 +1,4 @@
+<?php session_start(); ?>
 <?php
 if ($_SERVER['REQUEST_METHOD'] === 'GET' && ! isset($_GET['complete'])) {
     // GET で初期アクセスされた時は送信用フォームを表示
@@ -13,11 +14,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET' && ! isset($_GET['complete'])) {
     <div class='warp'>
 <form action="" method="post">
    <label> <div class='a'>問い合わせ内容</div><div class='b'><input type="text" name="name0" ></div></label>
-    <label><div class='c'>メールアドレス入力</div><div class='d'><input type="text" name="mail"></div></label>
     <button type="submit" class='g'>送信</button>
 </form>
 <button onclick="location.href='inquiry-response.php'" class='e'>返信受け取り</button>
-<button onclick="location.href='Top_kensakukekka'"class='f'>戻る</button>
+<button onclick="location.href='Top-kensakukekka.php'"class='f'>戻る</button>
 </div>
 </body>
 </html>
@@ -27,12 +27,12 @@ HTML;
     $pdo=new PDO('mysql:host=mysql301.phy.lolipop.lan;dbname=LAA1517815-ch;charset=utf8',
     'LAA1517815','chinese');
     $sql=$pdo->prepare('select * from client where client_address=?');
-    $sql->execute([$_POST['mail']]);
+    $sql->execute([$_SESSION['customer']['address']]);
     foreach($sql as $id){
     $myid=$id['client_id'];
     }
     if (empty($_POST['name0'])) {
-    }else if(empty($_POST['mail'])){
+    }else if(empty($_SESSION['customer']['address'])){
     } else {
     $sql=$pdo->prepare('insert into inquiry(inquiry_content,client_id) values(?,?)');
     if($sql->execute([$_POST['name0'],$myid])){
@@ -40,7 +40,7 @@ HTML;
     }
     }
     // POST でアクセスされた時はリダイレクトレスポンスを返す
-    header('Location: Top_kensakukekka.php', true, 301);
+    header('Location: Top_kensakukekka.php?complete', true, 301);
 } elseif ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET['complete'])) {
     // POST でアクセスされた後のリダイレクト先。
     // リダイレクト先の画面で完了ページを表示する
