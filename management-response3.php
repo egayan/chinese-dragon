@@ -1,4 +1,4 @@
-<link href="style/management-response3.css" rel="stylesheet">
+<link href="css/management-response3.css" rel="stylesheet">
 <?php
     if (isset($_POST['id'])) {
         try {

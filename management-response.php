@@ -29,7 +29,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="style/manegement-response.css" rel="stylesheet">
+    <link href="css/manegement-response.css" rel="stylesheet">
     <title>一覧</title>
 </head>
 <table>
