@@ -17,7 +17,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET' && ! isset($_GET['complete'])) {
     <button type="submit" class='g'>送信</button>
 </form>
 <button onclick="location.href='inquiry-response2.php'" class='e'>返信受け取り</button>
-<button onclick="location.href='Top.php'"class='f'>戻る</button>
+<button onclick="location.href='loguin-input.php'"class='f'>戻る</button>
 </div>
 </body>
 </html>
