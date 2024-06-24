@@ -30,8 +30,8 @@ try {
             
             while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
                 echo "<tr>";
-                echo "<td><a class='report-link' href='user.php?id=" . htmlspecialchars($row["suspect_id"]) . "'>" . htmlspecialchars($row["report_reason"]) . "</a></td>";
-                echo "<td><a class='report-link' href='user.php?id=" . htmlspecialchars($row["suspect_id"]) . "'>" . htmlspecialchars($row["suspect_id"]) . "</a></td>";
+                echo "<td><a class='report-link' href='account_management?id=" . htmlspecialchars($row["suspect_id"]) . "'>" . htmlspecialchars($row["report_reason"]) . "</a></td>";
+                echo "<td><a class='report-link' href='account_management?id=" . htmlspecialchars($row["suspect_id"]) . "'>" . htmlspecialchars($row["suspect_id"]) . "</a></td>";
                 echo "</tr>";
             }
             
@@ -40,8 +40,9 @@ try {
             echo "<p>No reports found.</p>";
         }
         ?>
-    <form action="" method="post">
+    <form action="Management_Top.php" method="post">
     <button type="submit">戻る</button>
 </div>
 </body>
 </html>
+</form>

@@ -7,7 +7,7 @@
     <title>ご利用上の注意</title>
 </head>
 <body>
-    <form action="Top.php"method="post">
+    <form action="Top_kensakukekka.php"method="post">
     <div class="container">
         <h1>当サイトのご利用上の注意</h1>
         <p>このサイトの利用には、以下の利用規約が適用されます。サイトを利用することで、これらの規約に同意したものとみなされます。

@@ -17,8 +17,9 @@
     }
     ?>
     <br><hr><br>
+    <form action="login.php" method="post">
     <input type="submit" value="ログイン画面">
-    </body>
-</html>
+</form>    
 </body>
 </html>
+

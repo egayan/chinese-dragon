@@ -73,7 +73,7 @@ if(isset($_SESSION['customer'])){
 }
 if($_SESSION['login']['id']==1){
 
-$freeze_check = new PDO($connect,USER,PASS);
+$pdo = new PDO($connect,USER,PASS);
 $freeze_check = $pdo->prepare('select * from client where client_address=?');
 $freeze_check ->execute([$_POST['login']]);
 foreach($freeze_check as $row){
