@@ -10,7 +10,7 @@ echo'<input type="text" placeholder="必須項目です" name="name" required>';
 echo'</td></tr>';
 
 echo'<tr><td>メールアドレス　';
-echo'<input type="text" placeholder="必須項目です" name="address" required>';
+echo'<input type="email" placeholder="必須項目です" name="address" required>';
 echo'</td></tr>';
 
 echo'<tr><td>パスワード　　　';
