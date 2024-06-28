@@ -30,8 +30,8 @@ try {
             
             while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
                 echo "<tr>";
-                echo "<td><a class='report-link' href='account_management?id=" . htmlspecialchars($row["suspect_id"]) . "'>" . htmlspecialchars($row["report_reason"]) . "</a></td>";
-                echo "<td><a class='report-link' href='account_management?id=" . htmlspecialchars($row["suspect_id"]) . "'>" . htmlspecialchars($row["suspect_id"]) . "</a></td>";
+                echo "<td><a class='report-link' href='account_management'>" . htmlspecialchars($row["report_reason"]) . "</a></td>";
+                echo "<td><a class='report-link' href='account_management?client_id=" . htmlspecialchars($row["suspect_id"]) . "'>" . htmlspecialchars($row["suspect_id"]) . "</a></td>";
                 echo "</tr>";
             }
             
