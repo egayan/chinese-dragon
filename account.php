@@ -20,6 +20,6 @@ echo '</tr>';
 }
 echo '</table>';
 ?>
-<div align="center"><button><a href="*">戻る</a></button></div>
+<div align="center"><button><a href="Management_Top.php">管理者トップへ戻る</a></button></div>
 <?php //管理者トップに戻る ?>
 <?php require 'footer.php'; ?> 

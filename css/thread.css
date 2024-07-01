@@ -1,153 +1,102 @@
-/* General styles */
+/* thread.css */
 body {
-    font-family: 'Arial', sans-serif;
-    background-color: #f0f2f5;
+    font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
+    background-color: #f9f9f9; /* デフォルトの背景色 */
     color: #333;
     line-height: 1.6;
+    display: flex;
+    flex-direction: column; /* 縦向きのコンテナ */
+    justify-content: flex-start; /* 上寄せ */
+    align-items: center; /* 横方向中央揃え */
+    min-height: 100vh; /* ビューポートの高さいっぱいに */
+}
+
+.container {
+    background-color: #f9f9f9; /* 背景色をデフォルトに */
+    max-width: 600px;
+    width: 100%;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin: 20px; /* コンテナのマージンを追加 */
+    box-sizing: border-box; /* paddingとborderが幅に含まれるように */
 }
 
 h1 {
-        text-align: center;
-        color: 00000;
-        padding: 20px 0;
-        margin: 0;
-        font-size: 50px;
-        font-weight: normal;
-        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);        
-    }
-
-
-.container {
-    width: 90%;
-    max-width: 800px;
-    margin: 20px auto;
-    padding: 20px;
-    background: #fff;
-    border-radius: 12px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
-
-form {
-    margin: 20px 0;
-}
-
-textarea {
-    width: 100%;
+    text-align: center;
+    background-color: #007BFF;
+    color: white;
     padding: 15px;
-    border: 1px solid #ddd;
+    margin: 0 -20px 20px; /* マージンを調整 */
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+.post-container {
+    background: white;
+    border: 1px solid #ccc;
     border-radius: 8px;
-    resize: vertical;
-    font-size: 14px;
-    font-family: inherit;
-    box-sizing: border-box;
-    background-color: #f9f9f9;
-    transition: border-color 0.3s;
+    margin-bottom: 20px;
+    padding: 10px;
+    width: 100%; /* 幅を100%に設定 */
+    box-sizing: border-box; /* paddingとborderが幅に含まれるように */
 }
 
-textarea:focus {
-    border-color: #28a745;
-}
-
-button {
-    background-color: #28a745;
-    color: black;
-    border: none;
-    padding: 12px 20px;
-    border-radius: 8px;
-    cursor: pointer;
-    font-size: 16px;
-    margin-top: 10px;
-    transition: background-color 0.3s, transform 0.3s;
-}
-
-button:hover {
-    background-color: #218838;
-    transform: translateY(-2px);
-}
-
-a {
-    color: #28a745;
+.post-container a {
+    color: #007BFF;
     text-decoration: none;
 }
 
-a:hover {
+.post-container a:hover {
     text-decoration: underline;
 }
 
-.thread {
-    margin-bottom: 20px;
-    padding: 15px;
-    border: 1px solid #eee;
-    border-radius: 8px;
-    background-color: #fff;
-    transition: box-shadow 0.3s;
-}
-
-.thread:hover {
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
-
-.thread .name,
-.thread .post-content,
-.date {
-    color: #333;
-    position: relative;
-    top: -13px;
-    left: 950px;
-}
-
-.thread .name {
-    font-weight: bold;
+.post-container .date {
+    font-size: 14px;
+    color: #666;
     margin-bottom: 5px;
-    display: flex;
-    align-items: center;
 }
 
-.thread .name a {
-    color: #28a745;
-    margin-left: 10px;
-    font-size: 14px;
-    text-decoration: none;
-    transition: color 0.3s;
+.post-container .thread {
+    margin-top: 10px;
+    word-wrap: break-word;
 }
 
-.thread .name a:hover {
-    color: #218838;
-}
-
-.thread .post-content {
-    background-color: #f9f9f9;
-    border: 1px solid #e1e1e1;
+textarea {
+    width: calc(100% - 20px);
     padding: 10px;
-    border-radius: 8px;
-    margin-top: 5px;
-    font-size: 14px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    font-size: 16px;
+    box-sizing: border-box;
 }
 
-.thread .date {
-    font-size: 12px;
-    color: #999;
-    text-align: right;
-    margin-top: 5px;
+button {
+    background-color: #007BFF;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    width: 100%;
 }
 
-hr {
-    border: 0;
-    border-top: 1px solid #eee;
-    margin: 30px 0;
+button:hover {
+    background-color: #0056b3;
 }
-
 .overlay {
     position: fixed;
     top: 0;
     left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.6);
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
     display: none;
-    z-index: 10;
+    z-index: 999;
 }
 
 .popup {
@@ -155,78 +104,49 @@ hr {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    background: #fff;
+    background: white;
     padding: 20px;
-    border-radius: 12px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
     display: none;
-    z-index: 20;
     width: 90%;
-    max-width: 500px;
-    text-align: center;
+    max-width: 400px;
+    z-index: 1000;
+}
+
+
+.popup button {
+    display: inline-block;
+    margin-top: 10px;
 }
 
 .popup textarea {
     width: 100%;
-    height: 100px;
-    padding: 10px;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    resize: vertical;
-    margin-top: 10px;
-    background-color: #f9f9f9;
-    transition: border-color 0.3s;
-}
-
-.popup textarea:focus {
-    border-color: #28a745;
-}
-
-.popup button {
-    width: 45%;
-    margin: 10px 2.5%;
-}
-
-.popup #popupMessage {
-    font-size: 16px;
+    height: 80px;
     margin-bottom: 10px;
-}
-
-.popup #confirmationMessage {
+    border-radius: 5px;
+    border: 1px solid #ccc;
     font-size: 16px;
-    margin-bottom: 20px;
+    box-sizing: border-box;
+    resize: vertical;
 }
 
-.popup .button-group {
-    display: flex;
-    justify-content: space-around;
-}
+@media screen and (max-width: 600px) {
+    .container {
+        padding: 5px;
+        margin: 10px; /* コンテナのマージンを追加 */
+    }
 
-#confirmationPopup {
-    text-align: center;
-}
+    h1 {
+        font-size: 20px;
+    }
 
-.return-button {
-    display: block;
-    text-align: center;
-    margin: 20px 0;
-}
+    .post-container {
+        padding: 10px;
+        margin: 10px 0;
+    }
 
-.return-button a {
-    background-color: #28a745;
-    color: white;
-    padding: 10px 20px;
-    border-radius: 8px;
-    text-decoration: none;
-    transition: background-color 0.3s, transform 0.3s;
-}
-
-.return-button a:hover {
-    background-color: #218838;
-    transform: translateY(-2px);
-}
-
-.decide{
-    top: -13px;
-    left: 950px;
+    button {
+        font-size: 14px;
+    }
 }
