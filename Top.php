@@ -1,4 +1,3 @@
-
 <?php session_start(); ?>
 <?php require 'header.php'; ?>
 <link rel="stylesheet" type="text/css" href="css/Top.css">
