@@ -12,5 +12,8 @@
  <p><input type="textarea" class="a" name="j"></p>
 <p><button type="submit">ジャンル追加</button></p>
     </form>
+    <div class="b">
+    <button onclick="location.href='jannru-itiran'" >戻る</button>
+</div>
 </body>
 </html>
