@@ -38,16 +38,23 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     exit(); // リダイレクト後にスクリプトの実行を停止する
                 } else {
                     echo '<script>alert("NGワードがタイトルに含まれています")</script>';
+                    echo '<script>window.location.href = "thread-write.php"</script>';
                 }
-            } else {
-                echo '入力内容を確認してください。';
+            } else if(strlen($title) > 30){
+            echo '<script>alert("タイトルを30文字以内で入力してください")</script>';
+            echo '<script>window.location.href = "thread-write.php"</script>';
+            }else{
+            echo '<script>alert("タイトルを入力してください。")</script>';
+            echo '<script>window.location.href = "thread-write.php"</script>';
+
             }
         } else {
-            echo 'ログインしてください。';
+            echo '<script>alert("ログインしてください。")</script>';
         }
     } elseif (isset($_POST['cancel'])) {
         // 確認画面での「キャンセル」ボタンが押された場合
-        echo 'キャンセルされました';
+        echo '<script>alert("キャンセルされました。")</script>';
+
         echo "<script>window.location.href = 'thread-write.php';</script>";
     }
 }
@@ -75,7 +82,7 @@ ob_end_flush();
         <p>以下の内容でスレッドを作成しますか？</p>
         <form action="" method="post">
             <label for="title">タイトル：</label>
-            <p><?php echo htmlspecialchars($_POST['title'], ENT_QUOTES, 'UTF-8'); ?></p>
+            <p><?php echo nl2br(wordwrap(htmlspecialchars($_POST['title'], ENT_QUOTES, 'UTF-8'), 30, "\n", true)); ?></p>
 
             <label for="genre_id">ジャンル：</label>
             <p><?php echo htmlspecialchars($genre_result['genre_name'], ENT_QUOTES, 'UTF-8'); ?></p>
