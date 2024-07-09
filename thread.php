@@ -26,11 +26,12 @@ try {
 
     // アクションの処理
     if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['client_id']) && isset($_POST['action_type'])) {
-        $client_id = $_POST['client_id']; // ポップアップから送信されたクライアントのIDを取得
-        $user_id = $_SESSION['customer']['id'] ?? null; // ログインしているユーザーのIDを取得
-        $action_type = $_POST['action_type']; // アクションのタイプを取得
+        $client_id = $_POST['client_id'];
+        $user_id = $_SESSION['customer']['id'] ?? null;
+        $action_type = $_POST['action_type'];
+    
         if ($user_id != null) {
-            if ($action_type === 'add_friend') {
+            if ($action_type === 'name') {
                 // 友達追加の処理
                 $stmt = $pdo->prepare('SELECT * FROM friend WHERE (client_id = ? AND opponent_id = ?) OR (client_id = ? AND opponent_id = ?)');
                 $stmt->execute([$user_id, $client_id, $client_id, $user_id]);
@@ -56,25 +57,25 @@ try {
                     }
                 }
             } elseif ($action_type === 'report') {
-     // 通報の処理
-    $report_reason = $_POST['report_reason'] ?? '';
-    if (!empty($report_reason)) {
-        // 選択した投稿のpost_idを取得
-            $reporter_id = $_SESSION['customer']['id'] ?? null; 
-            $suspect_id = $_POST['client_id']; // ポップアップから送信されたクライアントのIDを取得
-            $post_id = $_POST['post_id']; // 選択した投稿のpost_idを取得
-            $stmt = $pdo->prepare('INSERT INTO report(report_reason, date, reporter_id, post_id, suspect_id) VALUES (?, NOW(), ?, ?, ?)');
-            $stmt->execute([$report_reason, $reporter_id, $post_id, $suspect_id]);
-             echo '<script>alert("通報しました。");</script>';
-            } else {
-            echo '<script>alert("通報理由を入力してください。");</script>';
-        } 
-    }
+                // 通報の処理
+                $report_reason = $_POST['report_reason'] ?? '';
+                $post_id = $_POST['post_id'] ?? null; // post_idを取得
+                if (empty($post_id)) {
+                    echo '<script>alert("投稿IDが指定されていません。");</script>';
+                } elseif (!empty($report_reason)) {
+                    $reporter_id = $_SESSION['customer']['id'] ?? null;
+                    $suspect_id = $_POST['client_id'];
+                    $stmt = $pdo->prepare('INSERT INTO report(report_reason, date, reporter_id, post_id, suspect_id) VALUES (?, NOW(), ?, ?, ?)');
+                    $stmt->execute([$report_reason, $reporter_id, $post_id, $suspect_id]);
+                    echo '<script>alert("通報しました。");</script>';
+                } else {
+                    echo '<script>alert("通報理由を入力してください。");</script>';
+                }
+            }
         } else {
             echo '<script>alert("ログインしていません。");</script>';
         }
     }
-    
     // 投稿の処理
     if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['post'])) {
         if (!empty($_POST['post']) && strlen($_POST['post']) <= 200) {
@@ -126,16 +127,14 @@ $total_pages = ceil($total_posts / 10); // 10件ずつ表示
 ?>
 
 <!DOCTYPE html>
-<html lang="ja">
+<lang="ja">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="css/thread.css">
-    <script src="js/thread.js"></script>
     <title>スレッド: <?php echo htmlspecialchars($thread_title, ENT_QUOTES, 'UTF-8'); ?></title>
 </head>
-<body>
     <h1><?php echo htmlspecialchars($thread_title, ENT_QUOTES, 'UTF-8'); ?></h1>
     <?php
     // スレッドに関連する投稿を取得
@@ -146,17 +145,14 @@ $total_pages = ceil($total_posts / 10); // 10件ずつ表示
     ?>
             <!-- 投稿の表示 -->
             <div>
-                名前: <a href="#" name="name" class="popupLink" data-client-id="<?php echo htmlspecialchars($post['client_id'], ENT_QUOTES, 'UTF-8'); ?>" data-post-id="<?php echo htmlspecialchars($post['post_id'], ENT_QUOTES, 'UTF-8'); ?>"><?php echo htmlspecialchars($post['name'], ENT_QUOTES, 'UTF-8'); ?></a>
+            名前: <a href="#" name="name" class="popupLink" data-client-id="<?php $post['client_id']?>" data-post-id="<?php $post['post_id']?>"><?php echo htmlspecialchars($post['name'], ENT_QUOTES, 'UTF-8'); ?></a>
                 <a href="#" name="report" class="reportLink" data-client-id="<?php echo htmlspecialchars($post['client_id'], ENT_QUOTES, 'UTF-8'); ?>" data-post-id="<?php echo htmlspecialchars($post['post_id'], ENT_QUOTES, 'UTF-8'); ?>">通報する</a>
                 <div class="date">
                     投稿日時: <?php echo htmlspecialchars($post['date'], ENT_QUOTES, 'UTF-8'); ?><br>
                 </div>
                 <div class="thread">
-                    投稿: <?php echo nl2br(htmlspecialchars($post['post'], ENT_QUOTES, 'UTF-8')); ?><br>
-                </div>
-                <!-- 30文字ごとに改行 -->
                 <?php echo nl2br(wordwrap(htmlspecialchars($post['post'], ENT_QUOTES, 'UTF-8'), 30, "\n", true)); ?>
-            </div>
+                </div>
             <hr>
     <?php
         }
@@ -167,7 +163,6 @@ $total_pages = ceil($total_posts / 10); // 10件ずつ表示
     <textarea name="post" cols="50" rows="10" placeholder="ここに投稿を入力してください"></textarea><br>
     <button type="submit" name="decide">投稿する</button>
 </form>
-
 <!-- ページネーションの表示 -->
 <?php if ($page > 1): ?>
     <a href="thread.php?thread_id=<?php echo $thread_id; ?>&page=<?php echo ($page - 1); ?>">前のページ</a>
@@ -189,54 +184,27 @@ $total_pages = ceil($total_posts / 10); // 10件ずつ表示
 }
 
 ?>
-
-<div id="overlay" class="overlay"></div>
-<div id="popup" class="popup">
-<p id="popupMessage"></p>
-    <div id="reasonInput" style="display: none;">
-        <textarea id="reportReason" placeholder="通報理由を入力してください"></textarea>
+  <div id="overlay" class="overlay" style="display: none;"></div>
+    <div id="popup" class="popup" style="display: none;">
+        <p id="popupMessage"></p>
+        <div id="reasonInput" style="display: none;">
+            <textarea id="reportReason" placeholder="通報理由を入力してください"></textarea>
+        </div>
+        <button id="popupActionButton" onclick="showConfirmation()">次へ</button>
+        <button onclick="closePopup()">キャンセル</button>
+        <form id="popupForm" action="" method="POST">
+            <input type="hidden" name="client_id" id="clientIdField">
+            <input type="hidden" name="action_type" id="actionTypeField">
+            <input type="hidden" name="report_reason" id="reportReasonField">
+            <input type="hidden" name="post_id" id="postIdField">
+        </form>
     </div>
-    <button id="popupActionButton" onclick="showConfirmation()">次へ</button>
-    <button onclick="closePopup()">キャンセル</button>
-    <!-- ポップアップフォーム -->
-    <form id="popupForm" action="" method="POST">
-        <input type="hidden" name="client_id" id="clientIdField">
-        <input type="hidden" name="action_type" id="actionTypeField">
-        <input type="hidden" name="report_reason" id="reportReasonField">
-        <input type="hidden" name="post_id" id="postIdField">
-    </form>
-</div>
-<div id="confirmationPopup" class="popup" style="display: none;">
-    <p id="confirmationMessage"></p>
-    <button onclick="performAction()">実行</button>
-    <button onclick="closeConfirmationPopup()">キャンセル</button>
-</div>
-
-<?php
-/*
-<div class="overlay" id="overlay"></div>
-<div class="popup" id="popup">
-    <p id="popupMessage"></p>
-    <div id="reasonInput" style="display: none;">
-        <textarea id="reportReason" placeholder="通報理由を入力してください"></textarea>
+    <div id="confirmationPopup" class="popup" style="display: none;">
+        <p id="confirmationMessage"></p>
+        <button onclick="performAction()">実行</button>
+        <button onclick="closeConfirmationPopup()">キャンセル</button>
     </div>
-    <button id="popupActionButton" onclick="showConfirmation()">次へ</button>
-    <button onclick="closePopup()">キャンセル</button>
-    <!-- ポップアップフォーム -->
-    <form id="popupForm" action="" method="POST">
-        <input type="hidden" name="client_id" id="clientIdField">
-        <input type="hidden" name="action_type" id="actionTypeField">
-        <input type="hidden" name="report_reason" id="reportReasonField">
-        <input type="hidden" name="post_id" id="postIdField">
-    </form>
-</div>
 
-<div class="popup" id="confirmationPopup" style="display: none;">
-    <p id="confirmationMessage"></p>
-    <button id="confirmActionButton" onclick="performAction()">実行する</button>
-    <button onclick="closeConfirmationPopup()">キャンセル</button>
-</div>
-*/
-?>
+<script src="js/thread.js"></script>
 </body>
 </html>

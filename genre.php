@@ -23,10 +23,8 @@ try {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="css/genre.css">
-    <script src="js/genre.js" defer></script>
     <title>ジャンル一覧</title>
 </head>
-<body>
 <div class="container">
     <h1>ジャンル一覧</h1>
     <div class="Container">
@@ -61,11 +59,14 @@ try {
             <?php endforeach; ?>
         </div>
     </div>
+    </div>
     <?php if (isset($_SESSION['customer'])): ?>
         <div align="center"><button><a href="Top_kensakukekka.php">戻る</a></button></div>
     <?php else: ?>
         <div align="center"><button><a href="Top.php?gest=gest">戻る</a></button></div>
     <?php endif; ?>
 </div>
+    
+<script src="js/genre.js" defer></script>
 </body>
 </html>
