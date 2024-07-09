@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="style/toiawase.css" rel="stylesheet">
+    <link href="css/hensin.css" rel="stylesheet">
     <title>問い合わせページ</title>
 </head>
 <body>    
@@ -18,10 +18,21 @@ $pdo=new PDO('mysql:host=mysql301.phy.lolipop.lan;dbname=LAA1517815-ch;charset=u
         echo '<td>',$row['inquiry_content'],'</td>';
         echo '</tr>';
         echo '<tr>';
-        echo '<td>',$row['inquiry_response'],'</td>';
+        if(empty($row['inquiry_response'])){
+            echo '<td>',"返信待ちです",'</td>';
+        }else{
+            echo '<td>',$row['inquiry_response'],'</td>';
+
+        }
         echo '</tr>';
         echo "\n";
     }
     ?>
+    
     </table>
+    <div class="a">
+    <form action="inquiry1.php" method="post">  
+<p><button type="submit">戻る</button></p>
+    </form>
+</div>
     </body>

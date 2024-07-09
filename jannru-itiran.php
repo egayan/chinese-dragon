@@ -52,10 +52,10 @@
 ?>
     </table>
     <div class="a">
-    <button onclick="location.href='Management_Top.php'" >戻る</button>
+        <button onclick="location.href='jannrutuika-input.php'" >追加</button>
 </div>
 <div class="a">
-    <button onclick="location.href='jannrutuika-input.php'" >追加</button>
+<button onclick="location.href='Management_Top.php'" >戻る</button>
 </div>
 </body>
 </html>
