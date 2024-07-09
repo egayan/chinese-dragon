@@ -84,8 +84,9 @@
     $sql->execute([$myid['client_id']]);
     }
     $tr=0;
-    echo '<table align="center">';
-    echo '<tr><td>Myスレッド一覧</td></tr>';
+    echo '<div align="center">Myスレッド一覧</div>';
+    echo '<table id="example" border="1">';
+    
     echo '<tr>';
     foreach($sql as $row){
     echo '<td>';
@@ -99,7 +100,7 @@
         }
     }
           
-    echo '<tr><td><div align="center"><a href="Top_kensakukekka.php">戻る</a></div></td></tr>';
+    echo '</tr><tr><td><div align="center"><a href="Top_kensakukekka.php">戻る</a></div></td></tr>';
     echo '</table>';
     ?> 
 <script src="https://code.jquery.com/jquery.min.js"></script>
@@ -130,6 +131,9 @@ $(function() {
 }
 p{
   text-align:center;
+}
+#example{
+    margin:auto;
 }
 </style>
             <?php require 'footer.php'; ?> 
