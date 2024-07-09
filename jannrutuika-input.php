@@ -3,10 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="style/jannru.css" rel="stylesheet">
+    <link href="css/jannru.css" rel="stylesheet">
     <title>ジャンル追加画面</title>
 </head>
 <body>
+    <div class="wrap">
 <form action="jannrutuika-output.php" method="post">  
 <p>ジャンル入力</p>
  <p><input type="textarea" class="a" name="j"></p>
@@ -14,6 +15,7 @@
     </form>
     <div class="b">
     <button onclick="location.href='jannru-itiran'" >戻る</button>
+</div>
 </div>
 </body>
 </html>

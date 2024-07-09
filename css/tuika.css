@@ -1,0 +1,19 @@
+.a {
+    text-align:center;
+  }
+  .b{
+    text-align: center;
+    margin: 50px auto 50px;
+
+  }
+  p{
+    text-align:center;
+    margin: 50px auto 50px;
+
+  }
+  .wrap {
+    height: 100px;
+    width: 600px;
+    position: absolute;
+    transform-origin: 0% 0%;
+}

@@ -6,7 +6,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET' && ! isset($_GET['complete'])) {
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="style/toiawase.css" rel="stylesheet">
+    <link href="css/toiawase1.css" rel="stylesheet">
     <title>問い合わせページ</title>
 </head>
 <body>
@@ -40,7 +40,7 @@ HTML;
     }
     }
     // POST でアクセスされた時はリダイレクトレスポンスを返す
-    header('Location: /php2/kaihatu/Top.php?complete', true, 301);
+    header('Location: /php2/kaihatu/Top-kensakukekka.php?complete', true, 301);
 } elseif ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET['complete'])) {
     // POST でアクセスされた後のリダイレクト先。
     // リダイレクト先の画面で完了ページを表示する

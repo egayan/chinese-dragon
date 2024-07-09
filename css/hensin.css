@@ -1,0 +1,20 @@
+table {
+    border-collapse: collapse;
+    margin:auto;
+  }
+  table th, table td {
+    border: solid 1px black;
+    /*実線 1px 黒*/
+    text-align: center;
+padding-left: 2px;
+padding-right: 2px;
+  }
+  .a{
+  margin: 10px auto;
+  width:50px;
+  }
+  .b{
+    text-align: center;
+    margin: 50px auto 50px;
+
+  }

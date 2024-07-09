@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="styles/touroku.css" rel="stylesheet">
+    <link href="css/hensin.css" rel="stylesheet">
     <title>ジャンル追加画面</title>
 </head>
 <body>
@@ -19,7 +19,10 @@
     $myid=$id['client_id'];
         }
     if (empty($_POST['j'])) {
+        echo "<div class='b'>";
         echo "メールアドレスを入力してください";
+        echo "</div>";
+
     } else if($_POST['j']==isset($myaddress)){
         $sql=$pdo->prepare('select * from inquiry where client_id=?');
         if($sql->execute([$myid])){
@@ -28,18 +31,27 @@
                 echo '<td>',$row['inquiry_content'],'</td>';
                 echo '</tr>';
                 echo '<tr>';
-                echo '<td>',$row['inquiry_response'],'</td>';
+                if(empty($row['inquiry_response'])){
+                    echo '<td>',"返信待ちです",'</td>';
+                }else{
+                    echo '<td>',$row['inquiry_response'],'</td>';
+        
+                }              
                 echo '</tr>';
                 echo "\n";
             }
     }
     } else{
+        echo "<div class='b'>";
         echo "メールアドレスが違います";
+        echo "</div>";
+
     }
     ?>
     </table>
+    <div class="a">
     <form action="loguin-input.php" method="post">  
 <p><button type="submit">戻る</button></p>
     </form>
-
+</div>
 </html>

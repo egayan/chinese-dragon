@@ -3,11 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="style/touroku.css" rel="stylesheet">
+    <link href="css/tuika.css" rel="stylesheet">
     <title>ジャンル追加画面</title>
 </head>
 <body>
-    <h1>ジャンル削除</h1>
     <table>
 <?php
   if (isset($_GET['id'])) {
@@ -29,7 +28,7 @@ $sql = "DELETE FROM genre WHERE genre_id = :id";
         }
   }
     ?>
-    <h3>削除しました</h3>
+    <p>削除しました</p>
     </table>
     <form action="jannru-itiran.php" method="post">  
 <div class="a"><button type="submit">戻る</button></div>

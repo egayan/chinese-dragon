@@ -7,17 +7,19 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET' && ! isset($_GET['complete'])) {
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="style/toiawase.css" rel="stylesheet">
+    <link href="css/toiawase.css" rel="stylesheet">
     <title>問い合わせページ</title>
 </head>
 <body>
-    <div class='warp'>
+    <div class='wrap'>
+    <div class="contact">
 <form action="" method="post">
    <label> <div class='a'>問い合わせ内容</div><div class='b'><input type="text" name="name0" ></div></label>
     <button type="submit" class='g'>送信</button>
 </form>
 <button onclick="location.href='inquiry-response.php'" class='e'>返信受け取り</button>
-<button onclick="location.href='Top_kensakukekka.php'"class='f'>戻る</button>
+<button onclick="location.href='Top-kensakukekka.php'"class='f'>戻る</button>
+</div>
 </div>
 </body>
 </html>
@@ -40,7 +42,7 @@ HTML;
     }
     }
     // POST でアクセスされた時はリダイレクトレスポンスを返す
-    header('Location: Top_kensakukekka.php?complete', true, 301);
+    header('Location: /php2/kaihatu/Top-kensakukekka.php?complete', true, 301);
 } elseif ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET['complete'])) {
     // POST でアクセスされた後のリダイレクト先。
     // リダイレクト先の画面で完了ページを表示する

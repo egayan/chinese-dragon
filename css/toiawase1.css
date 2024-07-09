@@ -1,0 +1,58 @@
+.c{
+    position: absolute;
+      top: 10px;
+      left: 10px;
+    }
+    .d{
+      position: absolute;
+      top: 40px;
+      left: 10px;
+    }
+    .a{
+      position: relative; /* 今の位置を基準 */
+  top: 5px; /* 上から10px */
+  left: 555px; /* 左から20px */
+    } 
+     .b {
+      position: relative; /* 今の位置を基準 */
+  top: 5px; /* 上から10px */
+  left: 525px; /* 左から20px */       
+    }
+    .c{
+        position: relative; /* 今の位置を基準 */
+        top: 5px; /* 上から10px */
+        left: 540px; /* 左から20px */
+    }
+    .d{
+        position: relative; /* 今の位置を基準 */
+        top: 5px; /* 上から10px */
+        left: 525px; /* 左から20px */  
+
+    }
+    .e{
+      position: absolute;
+      top: 200px;
+      left: 560px;
+      width: 100px;
+      padding: 1px;
+    }
+    .f{
+      position: absolute;
+      top:160px;
+      left: 560px;
+          width: 100px;
+      padding: 1px;
+    }
+    .g{
+      position: absolute;
+      top: 120px;
+      left: 560px;
+      width: 100px;
+      padding: 1px;
+    }
+    .wrap {
+      height: 100px;
+      width: 600px;
+      position: absolute;
+      transform-origin: 0% 0%;
+  }

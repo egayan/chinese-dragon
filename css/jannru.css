@@ -4,3 +4,14 @@ p{ text-indent: 30em;}
     width:100px;
 
   }
+  .b{
+  position: absolute;
+top: 160px;
+    left:510px;
+  }
+  .wrap {
+    height: 100px;
+    width: 600px;
+    position: absolute;
+    transform-origin: 0% 0%;
+}
