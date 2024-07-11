@@ -1,15 +1,21 @@
-<?php session_start(); ?>
+<?php 
+session_start(); ?>
 <?php require 'header.php'; ?>
+<?php
+require('db-connect.php');
+?>
 <link rel="stylesheet" type="text/css" href="css/Top.css">
-<?php require 'db_conect.php'; ?>
+
 <div class="pat">
 <?php
+    $pdo = new PDO($connect, USER, PASS);
+    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 if(isset($_GET['gest'])){
 ?>
     <!-- メニュー -->
     <table align="center">
     
-    <tr><td><div align="center"><h1>チャイニーズドラゴン</h1></div></td></tr>
+    <tr><td><div align="center"><img src="images/logo.jpg" class="logo"></div></td></tr>
     <tr><td><div align="center">機能を利用するには<button><a href="login_input.php">ログイン画面へ戻る</a></button></div></td></tr>
     
     <?php
@@ -23,7 +29,7 @@ if(isset($_GET['gest'])){
     echo '<div  align="left" >';
     foreach($sql as $row){
         
-        echo '<a href="******.php?title=',$row['title'],'">',$row['title'],'</a>';
+        echo '<a href="thread.php?thread_id=',$row['thread_id'],'">',$row['title'],'</a>';
         $tr++;
         
     }
@@ -35,7 +41,7 @@ if(isset($_GET['gest'])){
     
     echo '<tr><td>';
     echo '<div align="center">';
-    echo '<button><a href="*">使い方・注意</a></button></div></td></tr>';
+    echo '<button><a href="">使い方・注意</a></button></div></td></tr>';
     echo '</table>';
     ?>
 
@@ -51,7 +57,7 @@ $pdo = new PDO($connect,USER,PASS);
 $sql = $pdo->prepare('select * from client where client_address=?');
 $sql->execute([$_POST['login']]);
 foreach($sql as $row){
-    if(password_verify($_POST['password'],$row['password'])){
+    if($_POST["password"]==$row['password']){
     $_SESSION['customer']=[
         'id'=>$row['client_id'],'name'=>$row['name'],
         'password'=>$row['password'],'address'=>$row['client_address']
@@ -100,7 +106,7 @@ if($check == 1){
     <input type="text" placeholder="検索" name="kensaku" size="70" ><input type="submit" value="検索" size="35" >
   </form>
   </div></td></tr>
-  
+  <tr><td>________________________________________________________________________________________________________________________________________</td></tr>
 
 <?php
 $pdo = new PDO($connect, USER, PASS);
@@ -120,7 +126,7 @@ $sql = $pdo->query('SELECT * FROM thread');
                 <div align="center">
                     <?php
                     foreach ($sql as $row) {
-                        echo '<a href="******.php?title=', $row['title'], '">', $row['title'], '</a>';
+                        echo '<a href="thread.php?thread_id=', $row['thread_id'], '">', $row['title'], '</a>';
                         $tr++;
                         if ($tr == 3) {
                             echo '</div>';
@@ -137,12 +143,15 @@ $sql = $pdo->query('SELECT * FROM thread');
             </td>
         </tr>
 
-    <div><tr><td><div align="center"><button><a href="*" style="color: #fff;">新規スレッド書き込み画面へ</a></button>
-    <button><a href="Popularity.php" style="color: #fff;">人気スレッドへ</a></button></div></td></tr>
-    
-    <tr><td><div align="center"><button><a href="chat.php"style="color: #fff;">個人チャット</a></button>
+    <tr><td>________________________________________________________________________________________________________________________________________</td></tr>
+    <tr><td>
+    <div align="center">
+    <button><a href="thread-write.php" style="color: #fff;">新規スレッド書き込み画面へ</a></button>
+    <button><a href="genre.php">ジャンル一覧へ</a></button>
+    <button><a href="Popularity.php" style="color: #fff;">人気スレッドへ</a></button>
+    <button><a href="chat.php"style="color: #fff;">個人チャット</a></button>
     <button><a href="mypage.php" style="color: #fff;">マイページ</a></button>
-    <button><a href="*" style="color: #fff;">お問い合わせ</a></button>
+    <button><a href="inquiry.php" style="color: #fff;">お問い合わせ</a></button>
     <button><a href="warning.php" style="color: #fff;">使い方・注意</a></button></div></td></tr></div>
     
 </table>
