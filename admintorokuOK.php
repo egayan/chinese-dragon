@@ -8,9 +8,10 @@
 </head>
 <body>
     <?php
+    $pass=password_hash($_POST['admin_password'],PASSWORD_DEFAULT);
     $pdo=new PDO($connect, USER, PASS);
     $sql=$pdo->prepare('insert into admin(admin_id,admin_address,admin_password) values (?, ? ,?)');
-    if($sql->execute([$_POST['admin_id'],$_POST['admin_address'],$_POST['admin_password']])) {
+    if($sql->execute([$_POST['admin_id'],$_POST['admin_address'],$pass])) {
         echo '<font color="red">アカウント登録完了です！</font>';
     }else{
         echo '<font color="red">アカウントの登録に失敗しました</font>';

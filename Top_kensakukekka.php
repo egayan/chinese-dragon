@@ -1,6 +1,7 @@
 <?php require 'header.php'; ?>
 <?php require 'db_conect.php'; ?>
 <link rel="stylesheet" type="text/css" href="css/Top_kensakukekka.css">
+<div class="pat">
 <table align="center">
 
     <tr><td><div align="center"><img src="images/logo.jpg" class="logo">
@@ -85,3 +86,4 @@ echo '</div>';
     <button><a href="warning.php" style="color: #fff;">使い方・注意</a></button></div></td></tr>
 </table>
 <?php require 'footer.php'; ?> 
+</div>

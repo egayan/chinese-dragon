@@ -7,7 +7,7 @@
 </head>
 <body>
     <h1>ログイン</h1>
-    <form action="Management_Top.php" method="post">
+    <form action="login_2.php" method="post">
         <label for="admin_address">メールアドレス</label>
         <input type="text" id="admin_address" name="admin_address" required><br>
         <label for="admin_password">パスワード</label>
