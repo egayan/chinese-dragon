@@ -1,8 +1,5 @@
 <?php session_start();?>
 <?php require 'header.php'; ?>
-<link rel="stylesheet" type="text/css" href="css/customer_output.css">
-<img src="images/logo.jpg" class="logo">
-<div class="pat">
 <?php require 'db_conect.php';?>
 <div align="center"><h1>新規登録</h1></div>
 <?php
@@ -27,9 +24,10 @@
 
      if(empty($sql2->fetchAll())){
      if(empty($sql->fetchAll())){
+            $pass=password_hash($_REQUEST['password'],PASSWORD_DEFAULT);
             $sql=$pdo->prepare('insert into client values(null,?,?,?,1)');
             $sql->execute([
-                $_REQUEST['address'],$_REQUEST['password'],$_REQUEST['name']   
+                $_REQUEST['address'],$pass,$_REQUEST['name']   
             ]);
                 echo'<div align="center">情報を登録しました。</div>';
                 echo '<div align="center"><a href="login_input.php"><button>ログインへ戻る</button></a></div>';
@@ -43,4 +41,3 @@
     }
 ?>
 <?php require 'footer.php'; ?>
-</div>

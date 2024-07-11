@@ -46,8 +46,8 @@ input[type="text"], input[type="submit"] {
 
 /* ボタンのスタイル */
 input[type="submit"], button {
-    /*padding: 10px 20px;*/
-    background-color: rgb(208, 46, 46); /* ボタンの背景色を緑に設定 */
+    padding: 10px 20px;
+    background-color: #4CAF50; /* ボタンの背景色を緑に設定 */
     color: white; /* ボタンのテキスト色を白に設定 */
     border: none;
     border-radius: 4px;
@@ -58,7 +58,7 @@ input[type="submit"], button {
 }
 
 input[type="submit"]:hover, button:hover {
-    background-color: rgb(197, 20, 20); /* ボタンのホバー時の背景色をダークグリーンに変更 */
+    background-color: #45a049; /* ボタンのホバー時の背景色をダークグリーンに変更 */
 }
 
 /* スレッドリンクのスタイル */
@@ -259,42 +259,7 @@ main {
     height: 20%;
 }
 .pat {
-    background-color: goldenrod;
-    
-}
-
-/* リンクのスタイル */
-a {
-    display: inline-block; /* リンクをブロック要素にする */
-    background-color: rgb(208, 46, 46); /* 背景色を設定 */
-    color: white; /* テキストの色を設定 */
-    padding: 10px 20px; /* パディングを設定 */
-    text-decoration: none; /* 下線を削除 */
-    border-radius: 4px; /* 角を丸める */
-    transition: background-color 0.3s ease, color 0.3s ease; /* ホバー時のアニメーションを追加 */
-   
-}
-
-/* リンクのホバー時のスタイル */
-a:hover {
-    background-color: rgb(197, 20, 20); /* ホバー時の背景色を変更 */
-    color: white; /* テキストの色を変更 */
-}
-
-/* スレッドリンクのスタイル */
-.thread-list a {
-    display: block;
-    padding: 10px;
-    margin: 5px 0;
-    background-color: #f9f9f9;
-    color: #333;
-    text-decoration: none;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    transition: background-color 0.3s ease, color 0.3s ease;
-}
-
-.thread-list a:hover {
-    background-color: #4CAF50;
-    color: white;
+    background-color: chocolate;
+    background-image: linear-gradient(90deg, rgb(247 71 25 / 68%) 50%, transparent 50%), linear-gradient(90deg, rgb(247 25 25) 50%, transparent 50%), linear-gradient(90deg, rgb(140 235 15) 50%, transparent 50%), linear-gradient(90deg, rgb(227 11 11) 50%, transparent 50%);
+    background-size: 20px, 30px, 40px, 50px;
 }

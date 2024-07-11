@@ -3,7 +3,6 @@
 <?php require 'db_conect.php'; ?>
 <h1>ログイン<h1>
 <?php
-
 //dbで使う名前などはまだ決めてないので仮入力 
 unset($_SESSION['customer']);
 if($_POST['password'] != null && $_POST['login'] != null){
