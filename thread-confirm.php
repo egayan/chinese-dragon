@@ -25,49 +25,46 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         }
 
         if (isset($_SESSION['login']['id'])) {
+            $client_id = $_SESSION['customer']['id']; // セッションからclient_idを取得
+
             // バリデーション
             if (strlen($title) >= 1 && strlen($title) <= 30 && !empty($genre_id)) {
                 if (!$contains_ngword) {
-                    $client_id = $_SESSION['login']['id'];
                     $statement = $pdo->prepare('INSERT INTO thread(title, genre_id, client_id) VALUES(?, ?, ?)');
                     $statement->execute([$title, $genre_id, $client_id]);
 
                     // スレッドが正常に作成された場合、thread.php にリダイレクトする
-                    echo '<script>window.location.href = "thread.php?thread_id=' . $pdo->lastInsertId() . '";</script>';
-
+                    header('Location: thread.php?thread_id=' . $pdo->lastInsertId());
                     exit(); // リダイレクト後にスクリプトの実行を停止する
                 } else {
                     echo '<script>alert("NGワードがタイトルに含まれています")</script>';
                     echo '<script>window.location.href = "thread-write.php"</script>';
                 }
-            } else if(strlen($title) > 30){
-            echo '<script>alert("タイトルを30文字以内で入力してください")</script>';
-            echo '<script>window.location.href = "thread-write.php"</script>';
-            }else{
-            echo '<script>alert("タイトルを入力してください。")</script>';
-            echo '<script>window.location.href = "thread-write.php"</script>';
-
+            } else {
+                echo '<script>alert("タイトルを1文字以上30文字以内で入力し、ジャンルを選択してください。")</script>';
+                echo '<script>window.location.href = "thread-write.php"</script>';
             }
         } else {
             echo '<script>alert("ログインしてください。")</script>';
+            echo '<script>window.location.href = "login.php"</script>';
         }
     } elseif (isset($_POST['cancel'])) {
         // 確認画面での「キャンセル」ボタンが押された場合
         echo '<script>alert("キャンセルされました。")</script>';
-
         echo "<script>window.location.href = 'thread-write.php';</script>";
     }
 }
 
 // ジャンル名の取得
+$genre_id = $_POST['genre_id']; // スレッド作成画面からgenre_idを取得
 $genre_query = $pdo->prepare('SELECT genre_name FROM genre WHERE genre_id = ?');
-$genre_query->execute([$_POST['genre_id']]);
+$genre_query->execute([$genre_id]);
 $genre_result = $genre_query->fetch(PDO::FETCH_ASSOC);
+
 
 // 出力バッファリングを終了し、内容を出力
 ob_end_flush();
 ?>
-
 <!DOCTYPE html>
 <html lang="ja">
 <head>
