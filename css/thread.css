@@ -26,7 +26,7 @@ body {
 
 h1 {
     text-align: center;
-    background-color: #4CAF50;
+    background-color: #007BFF;
     color: white;
     padding: 15px;
     margin: 0 -20px 20px; /* マージンを調整 */
@@ -45,7 +45,7 @@ h1 {
 }
 
 .post-container a {
-    color: #4CAF50;
+    color: #007BFF;
     text-decoration: none;
 }
 
@@ -75,7 +75,7 @@ textarea {
 }
 
 button {
-    background-color: #4CAF50;
+    background-color: #007BFF;
     color: white;
     padding: 10px 20px;
     border: none;
@@ -86,7 +86,7 @@ button {
 }
 
 button:hover {
-    background-color: #4CAF50;
+    background-color: #0056b3;
 }
 .overlay {
     position: fixed;

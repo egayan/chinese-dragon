@@ -1,7 +1,6 @@
 <?php
 session_start();
 require('db-connect.php');
-$client_id = $_SESSION['customer']['id']; // セッションからclient_idを取得
 ?>
 <!DOCTYPE html>
 <html lang="ja">
