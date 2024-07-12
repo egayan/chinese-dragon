@@ -30,52 +30,44 @@ try {
         $user_id = $_SESSION['customer']['id'] ?? null;
         $action_type = $_POST['action_type'];
     
-        if ($user_id != null) {
-            if ($action_type === 'name') {
-                // 友達追加の処理
-                $stmt = $pdo->prepare('SELECT * FROM friend WHERE (client_id = ? AND opponent_id = ?) OR (client_id = ? AND opponent_id = ?)');
-                $stmt->execute([$user_id, $client_id, $client_id, $user_id]);
-                if ($stmt->fetch()) {
-                    echo '<script>alert("既に友達です。");</script>';
-                } else {
-                    $stmt = $pdo->prepare('SELECT client_id FROM client WHERE client_id = ?');
-                    $stmt->execute([$user_id]);
-                    if ($stmt->fetch()) {
-                        $stmt = $pdo->prepare('SELECT client_id FROM client WHERE client_id = ?');
-                        $stmt->execute([$client_id]);
-                        if ($stmt->fetch()) {
-                            $stmt = $pdo->prepare('INSERT INTO friend (friend_id, client_id, opponent_id) VALUES (null, ?, ?)');
-                            $stmt->execute([$user_id, $client_id]);
-                            $stm = $pdo->prepare('INSERT INTO friend (friend_id, client_id, opponent_id) VALUES (null, ?, ?)');
-                            $stm->execute([$client_id, $user_id]);
-                            echo '<script>alert("友達を追加しました！");</script>';
-                        } else {
-                            echo '<script>alert("相手のIDが存在しません。");</script>';
-                        }
-                    } else {
-                        echo '<script>alert("ユーザーIDが存在しません。");</script>';
-                    }
-                }
-            } elseif ($action_type === 'report') {
-                // 通報の処理
-                $report_reason = $_POST['report_reason'] ?? '';
-                $post_id = $_POST['post_id'] ?? null; // post_idを取得
-                if (empty($post_id)) {
-                    echo '<script>alert("投稿IDが指定されていません。");</script>';
-                } elseif (!empty($report_reason)) {
-                    $reporter_id = $_SESSION['customer']['id'] ?? null;
-                    $suspect_id = $_POST['client_id'];
-                    $stmt = $pdo->prepare('INSERT INTO report(report_reason, date, reporter_id, post_id, suspect_id) VALUES (?, NOW(), ?, ?, ?)');
-                    $stmt->execute([$report_reason, $reporter_id, $post_id, $suspect_id]);
-                    echo '<script>alert("通報しました。");</script>';
-                } else {
-                    echo '<script>alert("通報理由を入力してください。");</script>';
-                }
-            }
+        if (isset($data['actionType'])) {
+            $actionType = $data['actionType'];
+            $clientId = $data['clientId'];
+            $postId = $data['postId'];
+        
+         // Retrieve JSON data from POST request
+// POSTリクエストからJSONデータを取得
+$data = json_decode(file_get_contents("php://input"), true);
+
+// actionTypeが設定されているか確認
+if (isset($data['actionType'])) {
+    $actionType = $data['actionType'];
+    $clientId = $data['clientId'];
+    $postId = $data['postId'];
+
+    if ($actionType === 'addFriend') {
+        $opponentId = $postId; // postIdが相手のIDだと仮定
+
+        $sql = "INSERT INTO friends (client_id, friend_id) VALUES ('$clientId', '$opponentId')";
+        if ($pdo->query($sql)) {
+            echo json_encode(["success" => true]);
         } else {
-            echo '<script>alert("ログインしていません。");</script>';
+            echo json_encode(["success" => false, "message" => "エラー: " . $sql . "<br>" . $pdo->errorInfo()]);
+        }
+    } elseif ($actionType === 'report') {
+        $reason = $data['reason'];
+
+        $sql = "INSERT INTO reports (client_id, post_id, reason) VALUES ('$clientId', '$postId', '$reason')";
+        if ($pdo->query($sql)) {
+            echo json_encode(["success" => true]);
+        } else {
+            echo json_encode(["success" => false, "message" => "エラー: " . $sql . "<br>" . $pdo->errorInfo()]);
         }
     }
+} else {
+    echo json_encode(["success" => false, "message" => "無効なアクションタイプです"]);
+}
+
     // 投稿の処理
     if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['post'])) {
         if (!empty($_POST['post']) && strlen($_POST['post']) <= 200) {
@@ -103,7 +95,8 @@ try {
             echo '<script>alert("入力してください")</script>';
         }
     }
-
+}
+    }
     // ページネーション機能の実装
 $page = isset($_GET['page']) ? intval($_GET['page']) : 1;
 $offset = ($page - 1) * 10; // 10件ずつ表示
@@ -124,6 +117,7 @@ $total_pages = ceil($total_posts / 10); // 10件ずつ表示
     echo "エラー: " . $e->getMessage();
     // エラー時の適切な処理を追加することが推奨されます。
 }
+    
 ?>
 
 <!DOCTYPE html>
@@ -145,7 +139,7 @@ $total_pages = ceil($total_posts / 10); // 10件ずつ表示
     ?>
             <!-- 投稿の表示 -->
             <div>
-            名前: <a href="#" name="name" class="popupLink" data-client-id="<?php $post['client_id']?>" data-post-id="<?php $post['post_id']?>"><?php echo htmlspecialchars($post['name'], ENT_QUOTES, 'UTF-8'); ?></a>
+            名前: <a href="#" name="name" class="popupLink"  data-action-type="addFriend" data-client-id="<?php $post['client_id']?>" data-post-id="<?php $post['post_id']?>"><?php echo htmlspecialchars($post['name'], ENT_QUOTES, 'UTF-8'); ?></a>
                 <a href="#" name="report" class="reportLink" data-client-id="<?php echo htmlspecialchars($post['client_id'], ENT_QUOTES, 'UTF-8'); ?>" data-post-id="<?php echo htmlspecialchars($post['post_id'], ENT_QUOTES, 'UTF-8'); ?>">通報する</a>
                 <div class="date">
                     投稿日時: <?php echo htmlspecialchars($post['date'], ENT_QUOTES, 'UTF-8'); ?><br>
@@ -184,26 +178,24 @@ $total_pages = ceil($total_posts / 10); // 10件ずつ表示
 }
 
 ?>
-  <div id="overlay" class="overlay" style="display: none;"></div>
-    <div id="popup" class="popup" style="display: none;">
-        <p id="popupMessage"></p>
-        <div id="reasonInput" style="display: none;">
-            <textarea id="reportReason" placeholder="通報理由を入力してください"></textarea>
-        </div>
-        <button id="popupActionButton" onclick="showConfirmation()">次へ</button>
-        <button onclick="closePopup()">キャンセル</button>
-        <form id="popupForm" action="" method="POST">
-            <input type="hidden" name="client_id" id="clientIdField">
-            <input type="hidden" name="action_type" id="actionTypeField">
-            <input type="hidden" name="report_reason" id="reportReasonField">
-            <input type="hidden" name="post_id" id="postIdField">
-        </form>
+    <div id="overlay" class="overlay"></div>
+    <div id="popup" class="popup">
+        <input type="hidden" id="clientIdField">
+        <input type="hidden" id="postIdField">
+        <input type="hidden" id="actionTypeField">
+        <input type="hidden" id="reportReasonField">
+        <div id="popupMessage"></div>
+        <textarea id="reportReason" placeholder="通報理由を入力してください" style="display:none;"></textarea>
+        <button id="popupActionButton">実行</button>
+        <button id="popupCancelButton">キャンセル</button>
     </div>
-    <div id="confirmationPopup" class="popup" style="display: none;">
-        <p id="confirmationMessage"></p>
-        <button onclick="performAction()">実行</button>
-        <button onclick="closeConfirmationPopup()">キャンセル</button>
+
+    <div id="confirmationPopup" class="popup">
+        <div id="confirmationMessage"></div>
+        <button id="confirmActionButton">確認</button>
+        <button id="confirmCancelButton">キャンセル</button>
     </div>
+
 
 <script src="js/thread.js"></script>
 </body>
