@@ -57,7 +57,7 @@ $pdo = new PDO($connect,USER,PASS);
 $sql = $pdo->prepare('select * from client where client_address=?');
 $sql->execute([$_POST['login']]);
 foreach($sql as $row){
-    if(password_verify($_POST['password'],$row['password']){
+    if(password_verify($_POST['password'],$row['password'])){
     $_SESSION['customer']=[
         'id'=>$row['client_id'],'name'=>$row['name'],
         'password'=>$row['password'],'address'=>$row['client_address']
