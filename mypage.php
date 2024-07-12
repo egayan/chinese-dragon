@@ -151,7 +151,7 @@
     echo '<tr>';
     foreach($sql_thread as $thread){
     echo '<td>';
-    echo '<a href="partner.php?genre=',$thread['title'],'">',$thread['title'],'</a>';
+    echo '<a href="thread.php?thread_id=',$thread['title'],'">',$thread['title'],'</a>';
     echo '</td>';
         $tr++;
         if($tr==3){
