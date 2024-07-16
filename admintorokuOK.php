@@ -8,19 +8,18 @@
 </head>
 <body>
     <?php
-    $pass=password_hash($_REQUEST['admin_password'],PASSWORD_DEFAULT);
-    $pdo=new PDO($connect, USER, PASS);
-    $sql=$pdo->prepare('insert into admin(admin_address,admin_password) values (?, ?)');
-    if($sql->execute([$_POST['admin_address'],$pass])) {
-        echo '<font color="red">アカウント登録完了です！</font>';
-    }else{
-        echo '<font color="red">アカウントの登録に失敗しました</font>';
+    $pass = password_hash($_REQUEST['admin_password'], PASSWORD_DEFAULT);
+    $pdo = new PDO($connect, USER, PASS);
+    $sql = $pdo->prepare('insert into admin(admin_address,admin_password) values (?, ?)');
+    if ($sql->execute([$_POST['admin_address'], $pass])) {
+        echo '<div class="message">アカウント登録完了です！</div>';
+    } else {
+        echo '<div class="message">アカウントの登録に失敗しました</div>';
     }
     ?>
     <br><hr><br>
     <form action="login_1.php" method="post">
-    <input type="submit" value="ログイン画面">
-</form>    
+        <input type="submit" value="ログイン画面">
+    </form>    
 </body>
 </html>
-

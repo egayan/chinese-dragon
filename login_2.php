@@ -4,11 +4,14 @@ require 'db-connect.php';
 
 unset($_SESSION['admin']);
 $pdo = new PDO($connect, USER, PASS);
-$sql = $pdo->prepare('SELECT * FROM admin WHERE admin_address = ? AND admin_password = ?');
-$sql->execute([$_POST['admin_address'], $_POST['admin_password']]);
+$sql = $pdo->prepare('SELECT * FROM admin WHERE admin_address = ?');
+$sql->execute([$_POST['admin_address']]);
 
 $admin = $sql->fetch(PDO::FETCH_ASSOC);
-if ($admin) {
+
+$matsufuji = password_verify($_POST['admin_password'],$admin['admin_password']);
+
+if ($matsufuji) {
     $_SESSION['admin'] = [
         'admin_address' => $admin['admin_address'],
         'admin_password' => $admin['admin_password']

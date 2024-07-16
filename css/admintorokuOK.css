@@ -1,0 +1,44 @@
+/* admintorokuOK.css */
+
+/* 全体のスタイル */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+    color: #333;
+    text-align: center;
+    padding: 50px;
+}
+
+/* メッセージのスタイル */
+.message {
+    font-size: 20px;
+    color: red;
+    margin-bottom: 20px;
+}
+
+/* フォームのスタイル */
+form {
+    display: inline-block;
+    margin-top: 20px;
+}
+
+input[type="submit"] {
+    background-color: #4CAF50; /* 緑のボタン */
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+input[type="submit"]:hover {
+    background-color: #45a049; /* ホバー時の色 */
+}
+
+hr {
+    border: 0;
+    height: 1px;
+    background: #ddd;
+    margin: 20px 0;
+}
