@@ -40,7 +40,7 @@
     echo '<td>';
     echo '<div align="center">';
     foreach($sql as $row){
-    echo '<a href="partner.php?genre=',$row['title'],'">',$row['title'],'</a>　　';
+        echo '<a href="thread.php?thread_id=',$row['thread_id'],'">',$row['title'],'</a>';
         $tr++;
         if($tr==3){
         echo '</div>';
@@ -62,7 +62,7 @@ echo '<td>';
 echo '<div align="center">';
 
 foreach($sql as $row){
-    echo '<a href="partner.php?genre=',$row['title'],'">',$row['title'],'</a>　　';
+    echo '<a href="thread.php?thread_id=',$row['thread_id'],'">',$row['title'],'</a>';
     $tr++;
         if($tr==3){
         echo '</div>';
@@ -96,11 +96,11 @@ echo '</div>';
 
 <div class="menu">
     <tr><td><div align="center">
-    <button><a href="*" style="color: #fff;">新規スレッド書き込み画面へ</a></button>
+    <button><a href="thread-write.php" style="color: #fff;">新規スレッド書き込み画面へ</a></button>
     <button><a href="Popularity.php" style="color: #fff;">人気スレッドへ</a></button>
     <button><a href="chat.php" style="color: #fff;">個人チャット</a></button>
     <button><a href="mypage.php" style="color: #fff;">マイページ</a></button>
-    <button><a href="*" style="color: #fff;">お問い合わせ</a></button>
+    <button><a href="inquiry.php" style="color: #fff;">お問い合わせ</a></button>
     <button><a href="warning.php" style="color: #fff;">使い方・注意</a></button></div></td></tr>
 </div> 
 </table>
