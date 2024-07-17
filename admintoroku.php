@@ -9,10 +9,9 @@
 <body>
    <h1>新規登録画面</h1>
    
+   <form action="admintorokuOK.php" method="post">
    <p>メールアドレス<input type="text" name="admin_address"></p>
    <p>パスワード<input type="password" name="admin_password"></p>
-
-   <form action="admintorokuOK.php" method="post">
         <input type="submit" value="登録">
     </form>   
     <br>
