@@ -18,8 +18,14 @@
     }
     ?>
     <br><hr><br>
+
     <form action="login_1.php" method="post">
-        <input type="submit" value="ログイン画面">
-    </form>    
+        <input type="submit" value="ログイン画面へ">
+    </form>   
+    
+    <form action="Management_Top.php" method="post">
+        <input type="submit" value="トップページへ">
+    </form>
+
 </body>
 </html>
