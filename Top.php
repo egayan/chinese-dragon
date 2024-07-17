@@ -1,8 +1,16 @@
 <?php session_start(); ?>
 <?php require 'header.php'; ?>
 <link rel="stylesheet" type="text/css" href="css/Top.css">
+<head>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Zen+Kurenaido&display=swap" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
 <?php require 'db_conect.php'; ?>
 <div class="pat">
+<div class="A">
 <?php
 if(isset($_GET['gest'])){
 ?>
@@ -17,7 +25,7 @@ if(isset($_GET['gest'])){
     $tr=0;
     $sql = $pdo->query('select * from thread');
     
-    echo '<tr><td><div align="center">スレッド一覧</div></td></tr>';
+    echo '<div align="center">スレッド一覧</div>';
     echo '<tr>';
     echo '<td>';
     echo '<div  align="left" >';
@@ -93,15 +101,17 @@ if($check == 1){
 
 <table align="center">
   <tr><td><div align="center"><img src="images/logo.jpg" class="logo">
+  <form action="login_input.php" method="post">
+        <input type="submit" value="ログアウト" size="35" >
+</form>
   
-  <a href="login_input.php">ログアウト</a></div></td></tr>
   <tr><td><div align="center">
   <form action="Top_kensakukekka.php" method="post">
     <input type="text" placeholder="検索" name="kensaku" size="70" ><input type="submit" value="検索" size="35" >
   </form>
   </div></td></tr>
-  <tr><td>________________________________________________________________________________________________________________________________________</td></tr>
-
+  <tr><td><div class="line"></div></td></tr>
+  
 <?php
 $pdo = new PDO($connect, USER, PASS);
 $tr = 0;
@@ -137,7 +147,8 @@ $sql = $pdo->query('SELECT * FROM thread');
             </td>
         </tr>
 
-    <tr><td>________________________________________________________________________________________________________________________________________</td></tr>
+    
+        <tr><td><div class="line"></div></td></tr>
     <tr><td>
     <div align="center">
     <button><a href="thread-write.php" style="color: #fff;">新規スレッド書き込み画面へ</a></button>
@@ -149,7 +160,7 @@ $sql = $pdo->query('SELECT * FROM thread');
     
 </table>
 </div>
-</div>
+
 
 <?php 
     }else{
@@ -161,4 +172,6 @@ $sql = $pdo->query('SELECT * FROM thread');
 }
 ?>
 <?php require 'footer.php'; ?>
+</div>
+                </div>
 
