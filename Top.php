@@ -31,7 +31,7 @@ if(isset($_GET['gest'])){
     echo '<div  align="left" >';
     foreach($sql as $row){
         
-        echo '<a href="thread.php?thread_id=',$row['thread_id'],'">',$row['title'],'</a>';
+        echo '<a href="******.php?title=',$row['title'],'">',$row['title'],'</a>';
         $tr++;
         
     }
@@ -59,7 +59,7 @@ $pdo = new PDO($connect,USER,PASS);
 $sql = $pdo->prepare('select * from client where client_address=?');
 $sql->execute([$_POST['login']]);
 foreach($sql as $row){
-    if(password_verify($_POST['password'],$row['password'])){
+    if($_POST["password"]==$row['password']){
     $_SESSION['customer']=[
         'id'=>$row['client_id'],'name'=>$row['name'],
         'password'=>$row['password'],'address'=>$row['client_address']
@@ -130,7 +130,7 @@ $sql = $pdo->query('SELECT * FROM thread');
                 <div align="center">
                     <?php
                     foreach ($sql as $row) {
-                        echo '<a href="thread.php?thread_id=',$row['thread_id'], '">', $row['title'], '</a>';
+                        echo '<a href="******.php?title=', $row['title'], '">', $row['title'], '</a>';
                         $tr++;
                         if ($tr == 3) {
                             echo '</div>';
@@ -151,11 +151,11 @@ $sql = $pdo->query('SELECT * FROM thread');
         <tr><td><div class="line"></div></td></tr>
     <tr><td>
     <div align="center">
-    <button><a href="thread-write.php" style="color: #fff;">新規スレッド書き込み画面へ</a></button>
+    <button><a href="*" style="color: #fff;">新規スレッド書き込み画面へ</a></button>
     <button><a href="Popularity.php" style="color: #fff;">人気スレッドへ</a></button>
     <button><a href="chat.php"style="color: #fff;">個人チャット</a></button>
     <button><a href="mypage.php" style="color: #fff;">マイページ</a></button>
-    <button><a href="inquiry.php" style="color: #fff;">お問い合わせ</a></button>
+    <button><a href="*" style="color: #fff;">お問い合わせ</a></button>
     <button><a href="warning.php" style="color: #fff;">使い方・注意</a></button></div></td></tr></div>
     
 </table>
