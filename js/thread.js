@@ -1,141 +1,82 @@
-// スレッドページでのポップアップ表示処理
-document.addEventListener('DOMContentLoaded', function() {
-    // 名前をクリックしたときの処理
-    var nameLinks = document.querySelectorAll('.popupLink');
-    nameLinks.forEach(function(link) {
-        link.addEventListener('click', function(event) {
+document.addEventListener("DOMContentLoaded", function () {
+    const popupLinks = document.querySelectorAll(".popupLink");
+    const reportLinks = document.querySelectorAll(".reportLink");
+    const overlay = document.getElementById("overlay");
+    const popup = document.getElementById("popup");
+    const clientIdField = document.getElementById("clientIdField");
+    const postIdField = document.getElementById("postIdField");
+    const actionTypeField = document.getElementById("actionTypeField");
+    const reportReasonField = document.getElementById("reportReasonField");
+    const popupMessage = document.getElementById("popupMessage");
+    const reportReason = document.getElementById("reportReason");
+    const popupActionButton = document.getElementById("popupActionButton");
+    const popupCancelButton = document.getElementById("popupCancelButton");
+
+    popupLinks.forEach(link => {
+        link.addEventListener("click", function (event) {
             event.preventDefault();
-            var clientId = link.getAttribute('data-client-id');
-            var postId = link.getAttribute('data-post-id');
-            var actionType = link.getAttribute('data-action-type');
+            const clientId = this.getAttribute("data-client-id");
+            const actionType = "add_friend";
 
-            // ポップアップに情報をセット
-            var overlay = document.getElementById('overlay');
-            var popup = document.getElementById('popup');
-            if (overlay && popup) {
-                document.getElementById('clientIdField').value = clientId;
-                document.getElementById('postIdField').value = postId;
-                document.getElementById('actionTypeField').value = actionType;
-
-                overlay.style.display = 'block';
-                popup.style.display = 'block';
-            } else {
-                console.error('OverlayまたはPopupが見つかりません。');
-            }
+            clientIdField.value = clientId;
+            actionTypeField.value = actionType;
+            popupMessage.innerText = "友達を追加しますか？";
+            reportReason.style.display = "none";
+            popup.style.display = "block";
+            overlay.style.display = "block";
         });
     });
 
-    // 通報するをクリックしたときの処理
-    var reportLinks = document.querySelectorAll('.reportLink');
-    reportLinks.forEach(function(link) {
-        link.addEventListener('click', function(event) {
+    reportLinks.forEach(link => {
+        link.addEventListener("click", function (event) {
             event.preventDefault();
-            var clientId = link.getAttribute('data-client-id');
-            var postId = link.getAttribute('data-post-id');
+            const clientId = this.getAttribute("data-client-id");
+            const postId = this.getAttribute("data-post-id");
+            const actionType = "report";
 
-            // ポップアップに情報をセット
-            var popup = document.getElementById('popup');
-            var reportReason = document.getElementById('reportReason');
-            if (popup && reportReason) {
-                document.getElementById('clientIdField').value = clientId;
-                document.getElementById('postIdField').value = postId;
-                document.getElementById('actionTypeField').value = 'report';
-
-                reportReason.style.display = 'block';
-                popup.style.display = 'block';
-                document.getElementById('popupActionButton').innerText = '通報する'; // ボタンのテキストを変更
-            } else {
-                console.error('PopupまたはReportReasonが見つかりません。');
-            }
+            clientIdField.value = clientId;
+            postIdField.value = postId;
+            actionTypeField.value = actionType;
+            popupMessage.innerText = "通報理由を入力してください：";
+            reportReason.style.display = "block";
+            popup.style.display = "block";
+            overlay.style.display = "block";
         });
     });
 
-    // キャンセルボタンをクリックしたときの処理
-    var popupCancelButton = document.getElementById('popupCancelButton');
-    if (popupCancelButton) {
-        popupCancelButton.addEventListener('click', function(event) {
-            event.preventDefault();
-            // ポップアップを非表示にする
-            var overlay = document.getElementById('overlay');
-            var popup = document.getElementById('popup');
-            var reportReason = document.getElementById('reportReason');
-            if (overlay) overlay.style.display = 'none';
-            if (popup) popup.style.display = 'none';
-            if (reportReason) reportReason.style.display = 'none'; // 通報理由入力欄も非表示にする
-        });
-    }
+    popupActionButton.addEventListener("click", function () {
+        const clientId = clientIdField.value;
+        const postId = postIdField.value;
+        const actionType = actionTypeField.value;
+        const reportReasonValue = reportReason.value;
 
-    // 実行ボタンをクリックしたときの処理
-    var popupActionButton = document.getElementById('popupActionButton');
-    if (popupActionButton) {
-        popupActionButton.addEventListener('click', function(event) {
-            event.preventDefault();
-            var actionType = document.getElementById('actionTypeField').value;
-            if (actionType === 'report') {
-                var reason = document.getElementById('reportReasonField').value;
-                // 通報する処理を実装する（Ajaxなどでサーバーに送信）
-                // この部分はサーバー側の処理に依存します
-                console.log('通報理由:', reason);
-            } else {
-                // 友達追加などの処理を実装する（Ajaxなどでサーバーに送信）
-                // この部分はサーバー側の処理に依存します
+        const xhr = new XMLHttpRequest();
+        xhr.open("POST", "thread.php", true);
+        xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+        xhr.onreadystatechange = function () {
+            if (xhr.readyState === 4 && xhr.status === 200) {
+                const response = JSON.parse(xhr.responseText); // JSONレスポンスをパース
+                alert(response); // ここでレスポンスメッセージをアラートとして表示
+                popup.style.display = "none";
+                overlay.style.display = "none";
             }
+        };
 
-            function showPopup(clientId, postId, actionType) {
-                var overlay = document.getElementById('overlay');
-                var popup = document.getElementById('popup');
-                var reportReason = document.getElementById('reportReason');
-            
-                // 要素の存在を確認
-                if (overlay && popup && reportReason) {
-                    document.getElementById('clientIdField').value = clientId;
-                    document.getElementById('postIdField').value = postId;
-                    document.getElementById('actionTypeField').value = actionType;
-            
-                    overlay.style.display = 'block';
-                    popup.style.display = 'block';
-            
-                    // 通報する場合の処理
-                    if (actionType === 'report') {
-                        reportReason.style.display = 'block';
-                        document.getElementById('popupActionButton').innerText = '通報する';
-                    } else {
-                        reportReason.style.display = 'none';
-                        document.getElementById('popupActionButton').innerText = '実行';
-                    }
-                } else {
-                    console.error('Overlay、Popup、またはReportReasonが見つかりません。');
-                }
-            }
-            
-            // 例: 名前をクリックした場合の処理
-document.querySelectorAll('a[name="name"]').forEach(function(link) {
-    link.addEventListener('click', function(event) {
-        event.preventDefault();
-        var clientId = this.getAttribute('data-client-id');
-        var postId = this.getAttribute('data-post-id');
-        showPopup(clientId, postId, 'addFriend');
+        let params = `client_id=${clientId}&action_type=${actionType}`;
+        if (actionType === "report") {
+            params += `&post_id=${postId}&report_reason=${encodeURIComponent(reportReasonValue)}`;
+        }
+
+        xhr.send(params);
     });
-});
 
-// 例: 通報するをクリックした場合の処理
-document.querySelectorAll('a[name="report"]').forEach(function(link) {
-    link.addEventListener('click', function(event) {
-        event.preventDefault();
-        var clientId = this.getAttribute('data-client-id');
-        var postId = this.getAttribute('data-post-id');
-        showPopup(clientId, postId, 'report');
+    popupCancelButton.addEventListener("click", function () {
+        popup.style.display = "none";
+        overlay.style.display = "none";
     });
-});
 
-            
-            // ポップアップを非表示にする
-            var overlay = document.getElementById('overlay');
-            var popup = document.getElementById('popup');
-            var reportReason = document.getElementById('reportReason');
-            if (overlay) overlay.style.display = 'none';
-            if (popup) popup.style.display = 'none';
-            if (reportReason) reportReason.style.display = 'none'; // 通報理由入力欄も非表示にする
-        });
-    }
+    overlay.addEventListener("click", function () {
+        popup.style.display = "none";
+        overlay.style.display = "none";
+    });
 });
