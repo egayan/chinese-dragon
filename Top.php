@@ -31,7 +31,7 @@ if(isset($_GET['gest'])){
     echo '<div  align="left" >';
     foreach($sql as $row){
         
-        echo '<a href="******.php?title=',$row['title'],'">',$row['title'],'</a>';
+        echo '<a href="thread.php?thread_id=', $row['thread_id'], '">', $row['title'], '</a>';
         $tr++;
         
     }
@@ -40,7 +40,7 @@ if(isset($_GET['gest'])){
     echo '</tr>';
     echo '<tr><td><div align="center">';
     echo '<button><a href="Popularity.php?gest=gest">人気スレッドへ</a></button></div></td></tr>';
-    
+    echo '<button><a href="genre.php" style="color: #fff;">スレッド一覧画面へ</a></button>';
     echo '<tr><td>';
     echo '<div align="center">';
     echo '<button><a href="warning.php">使い方・注意</a></button></div></td></tr>';
@@ -54,18 +54,18 @@ if(isset($_POST['passward']) || isset($_POST['login'])){
     $_SESSION['login']=[
         'id'=>0
     ];
-if($_POST['password'] != null && $_POST['login'] != null){
-$pdo = new PDO($connect,USER,PASS);
-$sql = $pdo->prepare('select * from client where client_address=?');
-$sql->execute([$_POST['login']]);
-foreach($sql as $row){
-    if($_POST["password"]==$row['password']){
-    $_SESSION['customer']=[
-        'id'=>$row['client_id'],'name'=>$row['name'],
-        'password'=>$row['password'],'address'=>$row['client_address']
-    ];
-    }
-}
+    if($_POST['password'] != null && $_POST['login'] != null){
+        $pdo = new PDO($connect,USER,PASS);
+        $sql = $pdo->prepare('select * from client where client_address=?');
+        $sql->execute([$_POST['login']]);
+        foreach($sql as $row){
+            if(password_verify($_POST['password'],$row['password'])){
+            $_SESSION['customer']=[
+                'id'=>$row['client_id'],'name'=>$row['name'],
+                'password'=>$row['password'],'address'=>$row['client_address']
+            ];
+            }
+        }
 
 if(isset($_SESSION['customer'])){
     /*echo 'ようこそ、',$_SESSION['customer']['name'],'さん。';*/
@@ -130,7 +130,7 @@ $sql = $pdo->query('SELECT * FROM thread');
                 <div align="center">
                     <?php
                     foreach ($sql as $row) {
-                        echo '<a href="******.php?title=', $row['title'], '">', $row['title'], '</a>';
+                        echo '<a href="thread.php?thread_id=', $row['thread_id'], '">', $row['title'], '</a>';
                         $tr++;
                         if ($tr == 3) {
                             echo '</div>';
@@ -152,6 +152,7 @@ $sql = $pdo->query('SELECT * FROM thread');
     <tr><td>
     <div align="center">
     <button><a href="thread-write.php" style="color: #fff;">新規スレッド書き込み画面へ</a></button>
+    <button><a href="genre.php" style="color: #fff;">スレッド一覧画面へ</a></button>
     <button><a href="Popularity.php" style="color: #fff;">人気スレッドへ</a></button>
     <button><a href="chat.php"style="color: #fff;">個人チャット</a></button>
     <button><a href="mypage.php" style="color: #fff;">マイページ</a></button>

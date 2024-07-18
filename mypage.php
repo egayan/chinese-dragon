@@ -131,7 +131,7 @@
          echo '</div>';
 
          echo'</form>';
-         echo '<div align="center"><a href="*">投稿</a></div>';
+         echo '<div align="center"><a href="thread-write.php">新規スレッド書き込み</a></div>';
          echo '<div align="center"><a href="login_input.php">ログアウト</a></div>';
          echo '<div align="center"><a href="account_delete_check.php?id=',$row['client_id'],'">アカウント削除</a></div>';
          
