@@ -28,8 +28,9 @@
      if(empty($sql2->fetchAll())){
      if(empty($sql->fetchAll())){
             $sql=$pdo->prepare('insert into client values(null,?,?,?,1)');
+            $pass = password_hash($_POST['password'], PASSWORD_DEFAULT);
             $sql->execute([
-                $_REQUEST['address'],$_REQUEST['password'],$_REQUEST['name']   
+                $_REQUEST['address'],$pass,$_REQUEST['name']   
             ]);
                 echo'<div align="center">情報を登録しました。</div>';
                 echo '<div align="center"><a href="login_input.php"><button>ログインへ戻る</button></a></div>';
