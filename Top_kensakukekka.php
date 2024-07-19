@@ -97,6 +97,7 @@ echo '</div>';
 <div class="menu">
     <tr><td><div align="center">
     <button><a href="thread-write.php" style="color: #fff;">新規スレッド書き込み画面へ</a></button>
+    <button><a href="genre.php" style="color: #fff;">スレッド一覧画面へ</a></button>
     <button><a href="Popularity.php" style="color: #fff;">人気スレッドへ</a></button>
     <button><a href="chat.php" style="color: #fff;">個人チャット</a></button>
     <button><a href="mypage.php" style="color: #fff;">マイページ</a></button>
