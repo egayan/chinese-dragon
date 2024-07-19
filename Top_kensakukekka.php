@@ -40,7 +40,7 @@
     echo '<td>';
     echo '<div align="center">';
     foreach($sql as $row){
-    echo '<a href="partner.php?genre=',$row['title'],'">',$row['title'],'</a>　　';
+        echo '<a href="thread.php?thread_id=', $row['thread_id'], '">', $row['title'], '</a>';
         $tr++;
         if($tr==3){
         echo '</div>';
@@ -62,7 +62,7 @@ echo '<td>';
 echo '<div align="center">';
 
 foreach($sql as $row){
-    echo '<a href="partner.php?genre=',$row['title'],'">',$row['title'],'</a>　　';
+    echo '<a href="thread.php?thread_id=', $row['thread_id'], '">', $row['title'], '</a>';
     $tr++;
         if($tr==3){
         echo '</div>';
