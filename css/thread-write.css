@@ -3,20 +3,19 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    
 }
 
 /* Basic styling for the layout */
 body {
     font-family: Arial, sans-serif;
     line-height: 2.3;
-    background-color: #f0f0f0;
-    padding: 15px;
+    /* padding: 7px; */
 }
 
 .container {
-    max-width: 600px;
     margin: 0 auto;
-    background-color: #fff;
+    background-color: goldenrod;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     border-radius: 8px;
     overflow: hidden; /* Ensure content does not overflow */
@@ -26,69 +25,178 @@ body {
 h1 {
     text-align: center;
     margin-bottom: 20px;
-}
+        font-family: "Zen Kurenaido", sans-serif;
+    }
 
 form {
     margin-bottom: 20px;
+        font-family: "Zen Kurenaido", sans-serif;
 }
 
 label {
     display: block;
-    margin-bottom: 5px;
+    margin-bottom: 10px;
     font-weight: bold;
 }
 
 textarea {
     width: 100%;
-    padding: 10px;
-    font-size: 16px;
-    border: 1px solid #ccc;
+    padding: 15px;
+    font-size: 15px;
     border-radius: 4px;
-    resize: vertical; /* Allow vertical resizing */
+    border-block-color:rgb(208, 46, 46);
+    
 }
 
 .radio-group {
     margin-bottom: 20px;
     text-align: center;
+        font-family: "Zen Kurenaido", sans-serif;
 }
 
 input[type="submit"] {
     text-align: center;
     display: block;
-    width: auto;
+    width: auto;/* Corrected to auto to fit the content */
     padding: 10px;
     margin: 0 auto; /* Center the button horizontally */
     margin-top: 10px;
-    background-color: #4CAF50;
+    background-color:rgb(208, 46, 46);
     color: white;
     border: none;
     border-radius: 4px;
     cursor: pointer;
     padding: 10px 20px;
+    font-family: "Zen Kurenaido", sans-serif;
 }
 
 .return-button {
     text-align: center;
     margin-top: 20px;
+    font-family: "Zen Kurenaido", sans-serif;
 }
 
 .return-button a {
     text-decoration: none;
-    background-color: #333;
+    background-color: rgb(208, 46, 46);
     color: #fff;
     padding: 10px 20px;
     border-radius: 4px;
+/* Reset some default browser styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    
+}
+
+/* Basic styling for the layout */
+body {
+    font-family: Arial, sans-serif;
+    line-height: 2.3;
+    /* padding: 7px; */
+}
+
+.container {
+    margin: 0 auto;
+    background-color: goldenrod;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    overflow: hidden; /* Ensure content does not overflow */
+    padding: 20px;
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 20px;
+        font-family: "Zen Kurenaido", sans-serif;
+    }
+
+form {
+    margin-bottom: 20px;
+        font-family: "Zen Kurenaido", sans-serif;
+}
+
+label {
+    display: block;
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+textarea {
+    width: 100%;
+    padding: 15px;
+    font-size: 15px;
+    border-radius: 4px;
+    border-block-color:rgb(208, 46, 46);
+    
+}
+
+.radio-group {
+    margin-bottom: 20px;
+    text-align: center;
+        font-family: "Zen Kurenaido", sans-serif;
+}
+
+input[type="submit"] {
+    text-align: center;
+    display: block;
+    width: auto;/* Corrected to auto to fit the content */
+    padding: 10px;
+    margin: 0 auto; /* Center the button horizontally */
+    margin-top: 10px;
+    background-color:rgb(208, 46, 46);
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    padding: 10px 20px;
+    font-family: "Zen Kurenaido", sans-serif;
+}
+
+.return-button {
+    text-align: center;
+    margin-top: 20px;
+    font-family: "Zen Kurenaido", sans-serif;
+}
+
+.return-button a {
+    text-decoration: none;
+    background-color: rgb(208, 46, 46);
+    color: #fff;
+    padding: 10px 20px;
+    border-radius: 4px;
+    font-family: "Zen Kurenaido", sans-serif;
 }
 
 .return-button a:hover {
-    background-color: #555;
+    background-color: rgb(197, 20, 20);
 }
 
 .decide {
     text-align: center;
+        font-family: "Zen Kurenaido", sans-serif;
+}
+.logo {
+    width: 1100px;
+}
 }
 
-/* Move genre label to the right */
-label[for="genre_id"] {
-    margin-left: 100px;
+.return-button a:hover {
+    background-color: rgb(197, 20, 20);
+}
+
+.decide {
+    text-align: center;
+        font-family: "Zen Kurenaido", sans-serif;
+}
+
+.logo {
+    width: 100%;
+    height: 20%;
+    
+}
+.pat {
+    background-color: goldenrod;
+    font-family: "Zen Kurenaido", sans-serif;
 }

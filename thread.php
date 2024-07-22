@@ -39,6 +39,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['client_id']) && isset
             if ($stmt->fetch()) {
                 echo json_encode('既に友達です。');
             } else {
+                if($client_id==$user_id){
+                    echo json_encode('自分は追加出来ません。');
+                }else{
                 $stmt = $pdo->prepare('SELECT client_id FROM client WHERE client_id = ?');
                 $stmt->execute([$user_id]);
                 if ($stmt->fetch()) {
@@ -50,6 +53,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['client_id']) && isset
                         echo json_encode('友達を追加しました！');
                     } else {
                         echo json_encode('相手のIDが存在しません。');
+                    }
                     }
                 }
             }
@@ -122,6 +126,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['client_id']) && isset
 <!DOCTYPE html>
 <html lang="ja">
 <head>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Zen+Kurenaido&display=swap" rel="stylesheet">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
@@ -129,6 +136,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['client_id']) && isset
     <title>スレッド: <?php echo htmlspecialchars($thread_title, ENT_QUOTES, 'UTF-8'); ?></title>
 </head>
 <body>
+<tr><td><div align="center"><img src="images/logo.jpg" class="logo"></div></td></tr>
     <h1><?php echo htmlspecialchars($thread_title, ENT_QUOTES, 'UTF-8'); ?></h1>
 
     <?php
