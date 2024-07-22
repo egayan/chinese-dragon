@@ -20,12 +20,18 @@ try {
 <html lang="ja">
 <head>
     <meta charset="UTF-8">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Zen+Kurenaido&display=swap" rel="stylesheet">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="css/genre.css">
     <title>ジャンル一覧</title>
 </head>
+<body>
+<tr><td><div align="center"><img src="images/logo.jpg" class="logo"></div></td></tr>
 <div class="container">
+
     <h1>ジャンル一覧</h1>
     <div class="Container">
         <div class="Arrow left"><</div>
@@ -50,7 +56,8 @@ try {
                         <ul>
                             <?php foreach ($threads as $thread): ?>
                                 <li><a href="thread.php?thread_id=<?php echo htmlspecialchars($thread['thread_id'], ENT_QUOTES, 'UTF-8'); ?>"><?php echo htmlspecialchars($thread['title'], ENT_QUOTES, 'UTF-8'); ?></a></li>
-                            <?php endforeach; ?>
+                            <hr>
+                                <?php endforeach; ?>
                         </ul>
                     <?php else: ?>
                         <p>スレッドがありません。</p>

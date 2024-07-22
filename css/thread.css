@@ -12,6 +12,9 @@ body {
     align-items: center; /* 横方向中央揃え */
     min-height: 100vh; /* ビューポートの高さいっぱいに */
     font-family: "Zen Kurenaido", sans-serif;
+
+    font-size:20px;
+
 }
 
 .container {
@@ -32,6 +35,8 @@ h1 {
     margin: 0 -20px 20px; /* マージンを調整 */
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
+    font-size:40px;
+    text-shadow: 1px 2px 3px #aaaaaa;
 }
 
 .post-container {
@@ -47,21 +52,25 @@ h1 {
 .post-container a {
     color: #4CAF50;
     text-decoration: none;
+    
 }
 
 .post-container a:hover {
     text-decoration: underline;
+    font-size:20px;
 }
 
 .post-container .date {
     font-size: 14px;
     color: #666;
     margin-bottom: 5px;
+    
 }
 
 .post-container .thread {
     margin-top: 10px;
     word-wrap: break-word;
+    font-size:20px;
 }
 
 textarea {
@@ -82,8 +91,11 @@ button {
     border-radius: 5px;
     cursor: pointer;
     font-size: 16px;
-    width: 100%;
-}
+    width: auto;
+    font-family: "Zen Kurenaido", sans-serif;
+    margin:8px;
+    text-align:center;
+    }
 
 button:hover {
     background-color:rgb(208, 46, 46);
@@ -169,7 +181,13 @@ button:hover {
     justify-content: center;
     margin-top: 20px;
     flex-direction: row; /* 横並びにする */
-    
+    font-family: "Zen Kurenaido", sans-serif;
+}
+
+.pagination {}
+
+.pagination {
+    font-family: "Zen Kurenaido", sans-serif;
 }
 
 .pagination a {
@@ -180,7 +198,8 @@ button:hover {
     color: white;
     text-decoration: none;
     border-radius: 5px;
-    
+        font-family: "Zen Kurenaido", sans-serif;
+
 }
 
 
@@ -203,3 +222,20 @@ button:hover {
     background-color: goldenrod;
     font-family: "Zen Kurenaido", sans-serif;
 }
+
+.submit{
+        font-family: "Zen Kurenaido", sans-serif;
+}
+
+/* 投稿するフォームのスタイル */
+form {
+    display: flex;
+    flex-direction: column; /* 縦並びにする */
+    align-items: center; /* 横方向中央揃え */
+    margin-top: 20px; /* 上に余白を追加 */
+}
+
+
+button {
+}
+

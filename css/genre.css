@@ -1,88 +1,127 @@
-h1{
-    text-align: center;
-    font-size: 40px;
-}
-/* タブ切替表示 */
-.tab-wrap {
-    display: flex;
-    flex-wrap: nowrap;
-    overflow-x: auto;
-    -webkit-overflow-scrolling: touch;
-    scrollbar-width: none; /* Firefox */
-}
-.tab-wrap::-webkit-scrollbar {
-    display: none; /* Chrome, Safari, Opera */
-}
-.tab-label { /* ラベル */
-    color: #fff; /* 文字色 */
-    background: #cacaca; /* 非アクティブタブの色 */
-    font-weight: bold;
-    white-space: nowrap;
-    text-align: center;
-    padding: 10px .5em;
-    cursor: pointer;
-    border-radius: 5px 5px 0 0;
-    flex: 0 0 auto;
-}
-.tab-label:not(:last-of-type) {
-    margin-right: 5px;
-}
-.tab-wrap label:hover { /* タブラベル ホバー色 */
-    background: rgba(131, 155, 92, 0.6);
-}
-.tab-switch:checked + .tab-label { /* 選択タブの色 */
-    background: #839b5c;
-}
-.tab-switch { /* ラジオボタン非表示 */
-    display: none;
-}
-.tab-body { /* コンテンツ内容部分 */
-    width: 100%;
-    padding: 10px;
-}
-.tab-body.active {
-    display: block;
-}
-
 /* スクロール矢印 */
 .Arrow {
     cursor: pointer;
-    display: flex;
+    display: flex; /* 初期から表示 */
     align-items: center;
     justify-content: center;
     width: 40px;
     height: 40px;
-    background: #ccc;
+    background: rgb(208, 46, 46);
     border-radius: 50%;
     user-select: none;
+    position: absolute;
+    top: 55%; /* 上部中央に配置 */
+    transform: translateY(-50%);
+    z-index: 10; /* 矢印がコンテンツの上に表示されるように */
 }
+
 .Arrow.left {
-    margin-right: -20px;
+    left: 10px; /* 左側に配置 */
 }
+
 .Arrow.right {
-    margin-left: 1200px;
+    right: 10px; /* 右側に配置 */
 }
+
+/* ボックスコンテナ */
 .Box-Container {
     display: flex;
-    overflow: hidden;
+    overflow-x: auto; /* 横スクロール可能 */
+    scroll-behavior: smooth; /* スムーズにスクロール */
+    white-space: nowrap;
+    width: 100%; /* コンテナの幅を全体に */
+    position: relative; /* 矢印が正しく表示されるように */
+    border-collapse: collapse; /* 表のようにするために追加 */
+}
+
+.Box-Container::-webkit-scrollbar {
+    display: none; /* Chrome, Safari, Opera */
+}
+
+.Box-Container {
+    -ms-overflow-style: none; /* IE 10+ */
+    scrollbar-width: none; /* Firefox */
+}
+
+.tab-label {
+    flex: 0 0 auto;
+    white-space: nowrap;
+    display: table-cell; /* 表形式にする */
+    padding: 10px;
+    margin-right: 10px;
+    background: goldenrod;
+    border: 1px solid goldenrod; /* 表のセルに境界線を追加 */
+    cursor: pointer;
+    
+}
+
+
+.logo {
     width: 100%;
-    transition: transform 0.3s ease-in-out;
+    height: 20%;
+    
 }
-.Hide {
-    display: none;
+.pat {
+    background-color: goldenrod;
+    font-family: "Zen Kurenaido", sans-serif;
+}
+/* ラジオボタンのデフォルトスタイルを隠す */
+.tab-switch {
+    display: none; /* ラジオボタン自体を非表示にする */
 }
 
-@media screen and (max-width: 600px) {
-    .container {
-        padding: 5px;
-        margin: 10px; /* コンテナのマージンを追加 */
-    }
-    .post-container {
-        padding: 10px;
-        margin: 10px 0;
-    }
+/* ラベルのスタイル */
+.tab-label {
+    display: inline-block;
+    padding: 10px 20px;
+    margin-right: 10px;
+    background-color:rgb(208, 46, 46);
+    border: 1px solid #aaa;
+    border-radius: 10px; /* 角を丸くする（オプション） */
+    cursor: pointer;
+    text-align: center; /* テキストを中央に配置 */
+    user-select: none; /* テキスト選択を防ぐ */
+    color:white;
+}
 
-    button {
-        font-size: 14px;
-    }
+/* 選択されたラベルのスタイル */
+.tab-switch:checked + .tab-label {
+    background-color:#ba7676; /* 選択されたときの背景色 */
+    color: white;/* 選択されたときのテキスト色 */
+}
+
+h1{
+    text-align:center;
+text-shadow: 1px 2px 3px #b9b8b8;
+    font-size:40px;
+        font-family: "Zen Kurenaido", sans-serif;
+}
+
+body{
+    background-color: goldenrod;
+        font-family: "Zen Kurenaido", sans-serif;
+}
+
+
+button {
+    background-color:rgb(208, 46, 46);
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+        font-family: "Zen Kurenaido", sans-serif;
+}
+
+button:hover {
+    background-color:#ff3030(208, 46, 46);
+}
+
+.tab-body{
+ font-size:20px;   
+}
+
+.tab-label{
+    font-size:20px;
 }
