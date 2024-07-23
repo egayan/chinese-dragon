@@ -1,0 +1,94 @@
+/* Reset some default browser styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Basic styling for the layout */
+body {
+    font-family: Arial, sans-serif;
+    line-height: 2.3;
+    background-color: #f0f0f0;
+    padding: 15px;
+}
+
+.container {
+    max-width: 600px;
+    margin: 0 auto;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    overflow: hidden; /* Ensure content does not overflow */
+    padding: 20px;
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+form {
+    margin-bottom: 20px;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+textarea {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    resize: vertical; /* Allow vertical resizing */
+}
+
+.radio-group {
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+input[type="submit"] {
+    text-align: center;
+    display: block;
+    width: auto;
+    padding: 10px;
+    margin: 0 auto; /* Center the button horizontally */
+    margin-top: 10px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    padding: 10px 20px;
+}
+
+.return-button {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.return-button a {
+    text-decoration: none;
+    background-color: #333;
+    color: #fff;
+    padding: 10px 20px;
+    border-radius: 4px;
+}
+
+.return-button a:hover {
+    background-color: #555;
+}
+
+.decide {
+    text-align: center;
+}
+
+/* Move genre label to the right */
+label[for="genre_id"] {
+    margin-left: 100px;
+}

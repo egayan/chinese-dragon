@@ -17,6 +17,6 @@ echo '<tr><td><div align="center">禁止ワード一覧</div></td></tr>';
         echo '</tr>';
     }
     echo '<tr><td><div align="center"><button><a href="Forbidden_word_input.php">禁止ワード追加画面へ</a></button>';
-    echo '<button><a href="*">戻る</a></button></div></td></tr>';
+    echo '<button><a href="Management_Top.php">管理者トップへ戻る</a></button></div></td></tr>';
 ?>
 <?php require 'footer.php'; ?> 

@@ -1,0 +1,102 @@
+/* ボディのスタイル */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f7f7f7;
+    margin: 0;
+    padding: 0;
+}
+
+/* コンテナのスタイル */
+#container {
+    max-width: 400px;
+    margin: 50px auto;
+    padding: 40px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+}
+
+/* 見出しのスタイル */
+h3 {
+    text-align: center;
+    margin-bottom: 20px; /* よりコンパクトに */
+    color: #333;
+}
+
+/* フォームのスタイル */
+form {
+    text-align: center;
+    margin-bottom: 20px; /* よりコンパクトに */
+}
+
+input[type="text"],
+input[type="password"] {
+    width: 100%;
+    padding: 15px;
+    margin-bottom: 25px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
+    font-size: 16px;
+}
+
+/* ボタンのスタイル */
+button {
+    padding: 10px 20px;
+    background-color: #4CAF50; 
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+    margin-bottom: 10px; /* ボタン同士の間隔を空ける */
+    width: 250px; /* 任意の幅 */
+    height: 50px; /* 任意の高さ */
+}
+
+button:hover {
+    background-color: #45a049;
+}
+
+button a {
+    text-decoration: none;
+    color: #fff;
+}
+
+/* テーブルのスタイル */
+table {
+    margin: 50px auto; /* 上下50px、左右は自動で中央揃え */
+    border-collapse: collapse;
+    width: 300px; /* テーブルの幅を指定 */
+}
+
+td {
+    padding: 8px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+/* リンクのスタイル */
+a {
+    color: #4CAF50;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+/* フッターのスタイル */
+footer {
+    text-align: center;
+    margin-top: 20px;
+    color: #888;
+}
+.logo {
+    width: 100%;
+    height: 20%;
+}
+.pat {
+    background-color: goldenrod;
+}

@@ -1,0 +1,88 @@
+h1{
+    text-align: center;
+    font-size: 40px;
+}
+/* タブ切替表示 */
+.tab-wrap {
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none; /* Firefox */
+}
+.tab-wrap::-webkit-scrollbar {
+    display: none; /* Chrome, Safari, Opera */
+}
+.tab-label { /* ラベル */
+    color: #fff; /* 文字色 */
+    background: #cacaca; /* 非アクティブタブの色 */
+    font-weight: bold;
+    white-space: nowrap;
+    text-align: center;
+    padding: 10px .5em;
+    cursor: pointer;
+    border-radius: 5px 5px 0 0;
+    flex: 0 0 auto;
+}
+.tab-label:not(:last-of-type) {
+    margin-right: 5px;
+}
+.tab-wrap label:hover { /* タブラベル ホバー色 */
+    background: rgba(131, 155, 92, 0.6);
+}
+.tab-switch:checked + .tab-label { /* 選択タブの色 */
+    background: #839b5c;
+}
+.tab-switch { /* ラジオボタン非表示 */
+    display: none;
+}
+.tab-body { /* コンテンツ内容部分 */
+    width: 100%;
+    padding: 10px;
+}
+.tab-body.active {
+    display: block;
+}
+
+/* スクロール矢印 */
+.Arrow {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    background: #ccc;
+    border-radius: 50%;
+    user-select: none;
+}
+.Arrow.left {
+    margin-right: -20px;
+}
+.Arrow.right {
+    margin-left: 1200px;
+}
+.Box-Container {
+    display: flex;
+    overflow: hidden;
+    width: 100%;
+    transition: transform 0.3s ease-in-out;
+}
+.Hide {
+    display: none;
+}
+
+@media screen and (max-width: 600px) {
+    .container {
+        padding: 5px;
+        margin: 10px; /* コンテナのマージンを追加 */
+    }
+    .post-container {
+        padding: 10px;
+        margin: 10px 0;
+    }
+
+    button {
+        font-size: 14px;
+    }
+}
