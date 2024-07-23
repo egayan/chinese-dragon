@@ -18,11 +18,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET' && ! isset($_GET['complete'])) {
     <button type="submit" class='g'>送信</button>
 </form>
 <button onclick="location.href='inquiry-response.php'" class='e'>返信受け取り</button>
-<<<<<<< HEAD
 <button onclick="location.href='Top_kensakukekka.php'"class='f'>戻る</button>
-=======
-<button onclick="location.href='Top-kensakukekka.php'"class='f'>戻る</button>
->>>>>>> 5e1ab1915062f0f93950b1ac0f78c800445274bc
 </div>
 </div>
 </body>
@@ -46,11 +42,7 @@ HTML;
     }
     }
     // POST でアクセスされた時はリダイレクトレスポンスを返す
-<<<<<<< HEAD
     header('Location: Top_kensakukekka.php?complete', true, 301);
-=======
-    header('Location: /php2/kaihatu/Top-kensakukekka.php?complete', true, 301);
->>>>>>> 5e1ab1915062f0f93950b1ac0f78c800445274bc
 } elseif ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET['complete'])) {
     // POST でアクセスされた後のリダイレクト先。
     // リダイレクト先の画面で完了ページを表示する

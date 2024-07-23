@@ -7,9 +7,6 @@ $client_id = $_SESSION['customer']['id']; // セッションからclient_idを�
 <html lang="ja">
 <head>
     <meta charset="UTF-8">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Zen+Kurenaido&display=swap" rel="stylesheet">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>新規スレッド作成</title>
@@ -17,10 +14,6 @@ $client_id = $_SESSION['customer']['id']; // セッションからclient_idを�
 </head>
 <body>
     <div class="container">
-<<<<<<< HEAD
-=======
-    <tr><td><div align="center"><img src="images/logo.jpg" class="logo"></div></td></tr>
->>>>>>> 5e1ab1915062f0f93950b1ac0f78c800445274bc
         <h1>新規スレッド作成</h1>
         <form action="thread-confirm.php" method="POST">
             <label for="title">タイトル</label>
@@ -36,11 +29,7 @@ $client_id = $_SESSION['customer']['id']; // セッションからclient_idを�
                   $stmt->execute();
                   $genres = $stmt->fetchAll(PDO::FETCH_ASSOC);
             ?>
-<<<<<<< HEAD
             <select id="genre_id" name="genre_id">
-=======
-            <select id="genre_id" name="genre_id" class="custom-select">
->>>>>>> 5e1ab1915062f0f93950b1ac0f78c800445274bc
             <?php
                   foreach($genres as $genre){
                       echo '<option value="' . $genre['genre_id'] . '">' . $genre['genre_name'] . '</option>';

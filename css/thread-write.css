@@ -3,17 +3,12 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-<<<<<<< HEAD
-=======
-    
->>>>>>> 5e1ab1915062f0f93950b1ac0f78c800445274bc
 }
 
 /* Basic styling for the layout */
 body {
     font-family: Arial, sans-serif;
     line-height: 2.3;
-<<<<<<< HEAD
     background-color: #f0f0f0;
     padding: 15px;
 }
@@ -22,14 +17,6 @@ body {
     max-width: 600px;
     margin: 0 auto;
     background-color: #fff;
-=======
-    /* padding: 7px; */
-}
-
-.container {
-    margin: 0 auto;
-    background-color: goldenrod;
->>>>>>> 5e1ab1915062f0f93950b1ac0f78c800445274bc
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     border-radius: 8px;
     overflow: hidden; /* Ensure content does not overflow */
@@ -39,97 +26,54 @@ body {
 h1 {
     text-align: center;
     margin-bottom: 20px;
-<<<<<<< HEAD
 }
 
 form {
     margin-bottom: 20px;
-=======
-        font-family: "Zen Kurenaido", sans-serif;
-    text-shadow: 1px 2px 3px #b9b8b8;
-    }
-
-form {
-    margin-bottom: 20px;
-        font-family: "Zen Kurenaido", sans-serif;
->>>>>>> 5e1ab1915062f0f93950b1ac0f78c800445274bc
 }
 
 label {
     display: block;
-<<<<<<< HEAD
     margin-bottom: 5px;
-=======
-    margin-bottom: 10px;
->>>>>>> 5e1ab1915062f0f93950b1ac0f78c800445274bc
     font-weight: bold;
 }
 
 textarea {
     width: 100%;
-<<<<<<< HEAD
     padding: 10px;
     font-size: 16px;
     border: 1px solid #ccc;
     border-radius: 4px;
     resize: vertical; /* Allow vertical resizing */
-=======
-    padding: 15px;
-    font-size: 15px;
-    border-radius: 4px;
-    border-block-color:rgb(208, 46, 46);
-    
->>>>>>> 5e1ab1915062f0f93950b1ac0f78c800445274bc
 }
 
 .radio-group {
     margin-bottom: 20px;
     text-align: center;
-<<<<<<< HEAD
-=======
-        font-family: "Zen Kurenaido", sans-serif;
->>>>>>> 5e1ab1915062f0f93950b1ac0f78c800445274bc
 }
 
 input[type="submit"] {
     text-align: center;
     display: block;
-<<<<<<< HEAD
     width: auto;
     padding: 10px;
     margin: 0 auto; /* Center the button horizontally */
     margin-top: 10px;
     background-color: #4CAF50;
-=======
-    width: auto;/* Corrected to auto to fit the content */
-    padding: 10px;
-    margin: 0 auto; /* Center the button horizontally */
-    margin-top: 10px;
-    background-color:rgb(208, 46, 46);
->>>>>>> 5e1ab1915062f0f93950b1ac0f78c800445274bc
     color: white;
     border: none;
     border-radius: 4px;
     cursor: pointer;
     padding: 10px 20px;
-<<<<<<< HEAD
-=======
-    font-family: "Zen Kurenaido", sans-serif;
->>>>>>> 5e1ab1915062f0f93950b1ac0f78c800445274bc
 }
 
 .return-button {
     text-align: center;
     margin-top: 20px;
-<<<<<<< HEAD
-=======
-    font-family: "Zen Kurenaido", sans-serif;
->>>>>>> 5e1ab1915062f0f93950b1ac0f78c800445274bc
 }
 
 .return-button a {
     text-decoration: none;
-<<<<<<< HEAD
     background-color: #333;
     color: #fff;
     padding: 10px 20px;
@@ -138,129 +82,13 @@ input[type="submit"] {
 
 .return-button a:hover {
     background-color: #555;
-=======
-    background-color: rgb(208, 46, 46);
-    color: #fff;
-    padding: 10px 20px;
-    border-radius: 4px;
-/* Reset some default browser styles */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    
-}
-
-/* Basic styling for the layout */
-body {
-    font-family: Arial, sans-serif;
-    line-height: 2.3;
-    /* padding: 7px; */
-}
-
-.container {
-    margin: 0 auto;
-    background-color: goldenrod;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    border-radius: 8px;
-    overflow: hidden; /* Ensure content does not overflow */
-    padding: 20px;
-}
-
-h1 {
-    text-align: center;
-    margin-bottom: 20px;
-        font-family: "Zen Kurenaido", sans-serif;
-    }
-
-form {
-    margin-bottom: 20px;
-        font-family: "Zen Kurenaido", sans-serif;
-}
-
-label {
-    display: block;
-    margin-bottom: 10px;
-    font-weight: bold;
-}
-
-textarea {
-    width: 100%;
-    padding: 15px;
-    font-size: 15px;
-    border-radius: 4px;
-    border-block-color:rgb(208, 46, 46);
-    
-}
-
-.radio-group {
-    margin-bottom: 20px;
-    text-align: center;
-        font-family: "Zen Kurenaido", sans-serif;
-}
-
-input[type="submit"] {
-    text-align: center;
-    display: block;
-    width: auto;/* Corrected to auto to fit the content */
-    padding: 10px;
-    margin: 0 auto; /* Center the button horizontally */
-    margin-top: 10px;
-    background-color:rgb(208, 46, 46);
-    color: white;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    padding: 10px 20px;
-    font-family: "Zen Kurenaido", sans-serif;
-}
-
-.return-button {
-    text-align: center;
-    margin-top: 20px;
-    font-family: "Zen Kurenaido", sans-serif;
-}
-
-.return-button a {
-    text-decoration: none;
-    background-color: rgb(208, 46, 46);
-    color: #fff;
-    padding: 10px 20px;
-    border-radius: 4px;
-    font-family: "Zen Kurenaido", sans-serif;
-}
-
-.return-button a:hover {
-    background-color: rgb(197, 20, 20);
->>>>>>> 5e1ab1915062f0f93950b1ac0f78c800445274bc
 }
 
 .decide {
     text-align: center;
-<<<<<<< HEAD
 }
 
 /* Move genre label to the right */
 label[for="genre_id"] {
     margin-left: 100px;
 }
-=======
-        font-family: "Zen Kurenaido", sans-serif;
-}
-.logo {
-    width: 1100px;
-}
-}
-
-.return-button a:hover {
-    background-color: rgb(197, 20, 20);
-}
-
-.decide {
-    text-align: center;
-        font-family: "Zen Kurenaido", sans-serif;
-}
-.logo {
-    width: 1100px;
-}
->>>>>>> 5e1ab1915062f0f93950b1ac0f78c800445274bc

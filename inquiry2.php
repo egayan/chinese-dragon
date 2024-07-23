@@ -17,11 +17,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET' && ! isset($_GET['complete'])) {
     <button type="submit" class='g'>送信</button>
 </form>
 <button onclick="location.href='inquiry-response2.php'" class='e'>返信受け取り</button>
-<<<<<<< HEAD
 <button onclick="location.href='login_input'"class='f'>戻る</button>
-=======
-<button onclick="location.href='loguin-input.php'"class='f'>戻る</button>
->>>>>>> 5e1ab1915062f0f93950b1ac0f78c800445274bc
 </div>
 </body>
 </html>
@@ -44,11 +40,7 @@ HTML;
     }
     }
     // POST でアクセスされた時はリダイレクトレスポンスを返す
-<<<<<<< HEAD
     header('Location: login_input.php?complete', true, 301);
-=======
-    header('Location: /php2/kaihatu/login-input.php?complete', true, 301);
->>>>>>> 5e1ab1915062f0f93950b1ac0f78c800445274bc
 } elseif ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET['complete'])) {
     // POST でアクセスされた後のリダイレクト先。
     // リダイレクト先の画面で完了ページを表示する

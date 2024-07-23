@@ -8,13 +8,10 @@
 </head>
 <body>
     <table>
-<<<<<<< HEAD
     <tr>
             <th>問い合わせ内容</th>
             <th>問い合わせ返信</th>
         </tr>
-=======
->>>>>>> 5e1ab1915062f0f93950b1ac0f78c800445274bc
     <?php
     $pdo=new PDO('mysql:host=mysql301.phy.lolipop.lan;dbname=LAA1517815-ch;charset=utf8',
     'LAA1517815','chinese');
@@ -36,11 +33,6 @@
             foreach($sql as $row){
                 echo '<tr>';
                 echo '<td>',$row['inquiry_content'],'</td>';
-<<<<<<< HEAD
-=======
-                echo '</tr>';
-                echo '<tr>';
->>>>>>> 5e1ab1915062f0f93950b1ac0f78c800445274bc
                 if(empty($row['inquiry_response'])){
                     echo '<td>',"返信待ちです",'</td>';
                 }else{
@@ -60,11 +52,7 @@
     ?>
     </table>
     <div class="a">
-<<<<<<< HEAD
     <form action="login_input.php" method="post">  
-=======
-    <form action="loguin-input.php" method="post">  
->>>>>>> 5e1ab1915062f0f93950b1ac0f78c800445274bc
 <p><button type="submit">戻る</button></p>
     </form>
 </div>
