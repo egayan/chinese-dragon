@@ -29,7 +29,7 @@ if(isset($_GET['freeze_out'])){
     echo '</td></tr>';
         
     echo '<tr><td>パスワード　　';
-    echo '<input type="text" name="password" value="',$row['password'],'">';
+    echo '<input type="text" name="password">';
     echo '</td></tr>';
         
     echo '<tr><td>';
@@ -72,9 +72,10 @@ if(isset($_GET['client_id'])){
 }
 if($fcid == 2){
     if($_SERVER["REQUEST_METHOD"]=='POST'){
+        $pass = password_hash($_POST['password'], PASSWORD_DEFAULT);
         $update=$pdo->prepare('update client set name=?, password=?,client_address=? where client_id=?');
         $update->execute([
-            $_POST['name'],$_POST['password'],
+            $_POST['name'],$pass,
             $_POST['address'],$_POST['id']
         ]);
         $sql = $pdo->prepare('select * from client where client_id = ?');
@@ -99,7 +100,7 @@ if($fcid == 2){
     echo'</td></tr>';
         
     echo'<tr><td>パスワード　　';
-    echo'<input type="text" name="password" value="',$row['password'],'">';
+    echo'<input type="text" name="password">';
     echo'</td></tr>';
         
     echo '<tr><td>';
@@ -150,7 +151,7 @@ if($fcid == 2){
     echo '</td></tr>';
         
     echo '<tr><td>パスワード　　';
-    echo '<input type="text" name="password" value="',$row['password'],'">';
+    echo '<input type="text" name="password">';
     echo '</td></tr>';
         
     echo '<tr><td>';
@@ -195,7 +196,7 @@ if(isset($_GET['freeze_id'])){
     echo '</td></tr>';
         
     echo '<tr><td>パスワード　　';
-    echo '<input type="text" name="password" value="',$row['password'],'">';
+    echo '<input type="text" name="password">';
     echo '</td></tr>';
         
     echo '<tr><td>';
@@ -211,9 +212,10 @@ if(isset($_GET['freeze_id'])){
     }
     echo '</table>';
 }else if($_SERVER["REQUEST_METHOD"]=='POST'){
+    $pass = password_hash($_POST['password'], PASSWORD_DEFAULT);
     $update=$pdo->prepare('update client set name=?, password=?,client_address=? where client_id=?');
     $update->execute([
-        $_POST['name'],$_POST['password'],
+        $_POST['name'],$pass,
         $_POST['address'],$_POST['id']
     ]);
     $sql = $pdo->prepare('select * from client where client_id = ?');
@@ -237,7 +239,7 @@ echo'<input type="text" name="address" value="',$row['client_address'],'">';
 echo'</td></tr>';
     
 echo'<tr><td>パスワード　　';
-echo'<input type="text" name="password" value="',$row['password'],'">';
+echo'<input type="text" name="password">';
 echo'</td></tr>';
     
 echo '<tr><td>';
@@ -273,7 +275,7 @@ echo'<input type="text" name="address" value="',$row['client_address'],'">';
 echo'</td></tr>';
 
 echo'<tr><td>パスワード　　';
-echo'<input type="text" name="password" value="',$row['password'],'">';
+echo'<input type="text" name="password">';
 echo'</td></tr>';
 
 echo '<tr><td>';

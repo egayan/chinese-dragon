@@ -101,7 +101,11 @@ echo '</div>';
     <button><a href="Popularity.php" style="color: #fff;">人気スレッドへ</a></button>
     <button><a href="chat.php" style="color: #fff;">個人チャット</a></button>
     <button><a href="mypage.php" style="color: #fff;">マイページ</a></button>
+<<<<<<< HEAD
     <button><a href="inquiry1.php" style="color: #fff;">お問い合わせ</a></button>
+=======
+    <button><a href="inquiry.php" style="color: #fff;">お問い合わせ</a></button>
+>>>>>>> 5e1ab1915062f0f93950b1ac0f78c800445274bc
     <button><a href="warning.php" style="color: #fff;">使い方・注意</a></button></div></td></tr>
 </div> 
 </table>

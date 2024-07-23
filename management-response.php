@@ -54,7 +54,11 @@
 ?>
     </table>
     <div class="a">
+<<<<<<< HEAD
     <button onclick="location.href='Management_Top.php'" >戻る</button>
+=======
+    <button onclick="location.href='inquiry.php'" >戻る</button>
+>>>>>>> 5e1ab1915062f0f93950b1ac0f78c800445274bc
 </div>
 </body>
 </html>

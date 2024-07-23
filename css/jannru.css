@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 body {
   font-family: Arial, sans-serif;
   background-color: #f0f0f0;
@@ -46,4 +47,22 @@ button {
 
 button:hover {
   background-color: #2980b9;
+=======
+p{ text-indent: 30em;}
+.a {
+    margin: 10px auto;
+    width:100px;
+
+  }
+  .b{
+  position: absolute;
+top: 160px;
+    left:510px;
+  }
+  .wrap {
+    height: 100px;
+    width: 600px;
+    position: absolute;
+    transform-origin: 0% 0%;
+>>>>>>> 5e1ab1915062f0f93950b1ac0f78c800445274bc
 }
